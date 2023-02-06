@@ -6,22 +6,14 @@
     public class R34TagsSearchBuilder
     {
         /// <summary>
-        /// The exact name of the target tag being fetched.
+        /// 
         /// </summary>
-        public string Name { get; set; }
+        public required R34TagSearchType SearchType { get; set; }
 
         /// <summary>
-        /// The pattern that will be used for searching Tags.
+        /// 
         /// </summary>
-        /// <remarks>
-        /// The pattern causes Rule34 to return tags that have this pattern anywhere in the name.
-        /// </remarks>
-        public string NamePattern { get; set; }
-
-        /// <summary>
-        /// The ID of the tag being fetched.
-        /// </summary>
-        public int Id { get; set; }
+        public required string Search { get; set; }
 
         /// <summary>
         /// The limit of tags that will be returned.
@@ -36,10 +28,9 @@
         /// </summary>
         public R34TagsSearchBuilder()
         {
-            Name = string.Empty;
-            NamePattern = string.Empty;
+            SearchType = R34TagSearchType.Name;
+            Search = string.Empty;
             Limit = 100;
-            Id = 0;
         }
     }
 }

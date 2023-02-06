@@ -153,6 +153,9 @@ namespace R34Sharp
         [XmlAttribute(AttributeName = "status")] public string Status { get; set; }
         #endregion
 
+
+        /// <summary>
+        /// </summary>
         protected override async Task OnBuildAsync()
         {
             SetFilesInfos();

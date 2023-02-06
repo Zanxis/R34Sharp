@@ -35,6 +35,8 @@ namespace R34Sharp
         [XmlAttribute(AttributeName = "count")] public int PostsCount { get; set; }
         #endregion
 
+        /// <summary>
+        /// </summary>
         protected override async Task OnBuildAsync()
         {
             await Task.CompletedTask;

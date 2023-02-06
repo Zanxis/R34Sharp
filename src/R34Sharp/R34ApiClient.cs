@@ -49,8 +49,9 @@ namespace R34Sharp
             urlBuilder.AddParameter("tags", searchBuilder.GetTagsString());
 
             if (searchBuilder.Deleted) urlBuilder.AddParameter("deleted", "show");
-            if (searchBuilder.LastId > 0) urlBuilder.AddParameter("last_id", searchBuilder.LastId.ToString());
-            if (searchBuilder.Page > 0) urlBuilder.AddParameter("pid", searchBuilder.Page.ToString());
+            if (searchBuilder.LastId.HasValue) urlBuilder.AddParameter("last_id", searchBuilder.LastId.Value.ToString());
+            if (searchBuilder.Page.HasValue) urlBuilder.AddParameter("pid", searchBuilder.Page.Value.ToString());
+            if (searchBuilder.Id.HasValue) urlBuilder.AddParameter("id", searchBuilder.Id.Value.ToString());
 
             // Get Result
             return await GetAsync<R34Posts>(urlBuilder.Build(), "Posts");
@@ -91,10 +92,14 @@ namespace R34Sharp
             urlBuilder.AddParameter("s", "tag");
             urlBuilder.AddParameter("q", "index");
             urlBuilder.AddParameter("limit", searchBuilder.Limit.ToString());
-            urlBuilder.AddParameter("name", searchBuilder.Name.ToString());
 
-            if (searchBuilder.Id > 0) urlBuilder.AddParameter("id", searchBuilder.Id.ToString());
-            if (!string.IsNullOrEmpty(searchBuilder.NamePattern)) urlBuilder.AddParameter("name_pattern", searchBuilder.NamePattern);
+            switch (searchBuilder.SearchType)
+            {
+                case R34TagSearchType.Name: urlBuilder.AddParameter("name", searchBuilder.Search); break;
+                case R34TagSearchType.Pattern: urlBuilder.AddParameter("name_pattern", searchBuilder.Search); break;
+                case R34TagSearchType.Id: urlBuilder.AddParameter("id", searchBuilder.Search); break;
+                default: urlBuilder.AddParameter("name", searchBuilder.Search); break;
+            }
 
             // Get Result
             return await GetAsync<R34Tags>(urlBuilder.Build(), "Tags");
