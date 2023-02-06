@@ -3,7 +3,7 @@
     /// <summary>
     /// The Rule34 model Tag Builder.
     /// </summary>
-    public struct R34TagModel
+    public class R34TagModel
     {
         public string Name
         {
