@@ -3,8 +3,11 @@
     /// <summary>
     /// The Rule34 model Tag Builder.
     /// </summary>
-    public struct R34TagModel
+    public class R34TagModel
     {
+        /// <summary>
+        /// Current tag name formatted for the Rule34 tag template.
+        /// </summary>
         public string Name
         {
             get => name;
@@ -23,6 +26,11 @@
         {
             name = value;
         }
+
+        /// <summary>
+        /// Returns the current Tag name.
+        /// </summary>
+        /// <returns>Tag Name.</returns>
         public override string ToString()
         {
             return name;

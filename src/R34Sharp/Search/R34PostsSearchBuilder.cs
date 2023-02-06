@@ -13,7 +13,7 @@ namespace R34Sharp
         /// <remarks>
         /// The value must be between 1 and 1000 posts.
         /// </remarks>
-        public int Limit { get; set; }
+        public required int Limit { get; set; }
 
         /// <summary>
         /// The Id of a specific Rule34 post.
@@ -21,7 +21,7 @@ namespace R34Sharp
         /// <remarks>
         /// This field is an optional value and if filled in, only one post will be returned.
         /// </remarks>
-        public int Id { get; set; }
+        public Optional<int> Id { get; set; }
 
         /// <summary>
         /// The last post id returned by another Posts request with the same search builder.
@@ -29,7 +29,7 @@ namespace R34Sharp
         /// <remarks>
         /// This field is an optional value and if filled in, only posts subsequent to this post will be returned.
         /// </remarks>
-        public int LastId { get; set; }
+        public Optional<int> LastId { get; set; }
 
         /// <summary>
         /// The page for searching Posts.
@@ -37,12 +37,12 @@ namespace R34Sharp
         /// <remarks>
         /// If this value is filled in, pay attention to the <see cref="R34TagModel"/> of the search, as there may be inconsistency.
         /// </remarks>
-        public int Page { get; set; }
+        public Optional<int> Page { get; set; }
 
         /// <summary>
         /// The tags that will be used for the search.
         /// </summary>
-        public R34TagModel[] Tags { get; set; }
+        public required R34TagModel[] Tags { get; set; }
 
         /// <summary>
         /// The search may return deleted posts.
@@ -55,9 +55,6 @@ namespace R34Sharp
         public R34PostsSearchBuilder()
         {
             Limit = 100;
-            Id = 0;
-            LastId = 0;
-            Page = 0;
             Tags = Array.Empty<R34TagModel>();
             Deleted = false;
         }

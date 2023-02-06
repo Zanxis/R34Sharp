@@ -5,6 +5,9 @@
     /// </summary>
     public abstract class R34Entity
     {
+        /// <summary>
+        /// The current entity's client.
+        /// </summary>
         protected R34ApiClient R34Client { get; private set; }
 
         internal async Task BuildAsync(R34ApiClient instance)
@@ -12,6 +15,10 @@
             R34Client = instance;
             await OnBuildAsync();
         }
+
+        /// <summary>
+        /// Special constructor responsible for initializing basic information of classes with inheritance.
+        /// </summary>
         protected abstract Task OnBuildAsync();
     }
 }

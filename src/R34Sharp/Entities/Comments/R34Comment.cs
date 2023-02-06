@@ -48,6 +48,8 @@ namespace R34Sharp
         [XmlAttribute(AttributeName = "body")] public string Content { get; set; }
         #endregion
 
+        /// <summary>
+        /// </summary>
         protected override async Task OnBuildAsync()
         {
             CreatedAt = DateTimeHelpers.R34Parse(CreatedAtString, "yyyy-dd-MM mm:ss");
