@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R34Sharp", "R34Sharp\R34Sharp.csproj", "{A424568C-9215-4D93-A299-1BEDA719C914}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R34Sharp.Tests", "R34Sharp.Tests\R34Sharp.Tests.csproj", "{8D540C2A-C210-4546-8E30-E88FE3047A55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A424568C-9215-4D93-A299-1BEDA719C914}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A424568C-9215-4D93-A299-1BEDA719C914}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A424568C-9215-4D93-A299-1BEDA719C914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D540C2A-C210-4546-8E30-E88FE3047A55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D540C2A-C210-4546-8E30-E88FE3047A55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D540C2A-C210-4546-8E30-E88FE3047A55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D540C2A-C210-4546-8E30-E88FE3047A55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
