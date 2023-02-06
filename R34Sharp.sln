@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R34Sharp", "R34Sharp\R34Sharp.csproj", "{A424568C-9215-4D93-A299-1BEDA719C914}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R34Sharp.Experimental", "R34Sharp.Experimental\R34Sharp.Experimental.csproj", "{15EC3AE8-F7AC-46F7-A943-27C76DFFB61C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A424568C-9215-4D93-A299-1BEDA719C914}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A424568C-9215-4D93-A299-1BEDA719C914}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A424568C-9215-4D93-A299-1BEDA719C914}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A424568C-9215-4D93-A299-1BEDA719C914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15EC3AE8-F7AC-46F7-A943-27C76DFFB61C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15EC3AE8-F7AC-46F7-A943-27C76DFFB61C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15EC3AE8-F7AC-46F7-A943-27C76DFFB61C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15EC3AE8-F7AC-46F7-A943-27C76DFFB61C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8CD54F4-2F47-48C2-8A92-5C673B3896A9}
+	EndGlobalSection
+EndGlobal

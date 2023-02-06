@@ -1,0 +1,39 @@
+﻿using System.Xml;
+using System.Xml.Serialization;
+
+namespace R34Sharp
+{
+    /// <summary>
+    /// Represents a collection of Rule34 Comments.
+    /// </summary>
+    [XmlRoot(ElementName = "comments")]
+    public class R34Comments : R34Data
+    {
+        /// <summary>
+        /// The collection of Rule34 comments.
+        /// </summary>
+        [XmlElement(ElementName = "comment")] public R34Comment[] Data { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlAttribute(AttributeName = "type")] public string Type { get; set; }
+
+        /// <summary>
+        /// The count of comments present in this collection.
+        /// </summary>
+        [XmlIgnore] public ulong Count => (ulong)Data.Length;
+
+        internal override async Task BuildAsync(R34ApiClient instance)
+        {
+            List<Task> tasks = new();
+            foreach (R34Comment comment in Data)
+            {
+                tasks.Add(Task.Run(() => comment.BuildAsync(instance)));
+            }
+            Task.WaitAll(tasks.ToArray());
+
+            await Task.CompletedTask;
+        }
+    }
+}
