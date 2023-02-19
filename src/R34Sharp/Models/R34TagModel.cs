@@ -11,7 +11,7 @@
         public string Name
         {
             get => name;
-            set => name = value.ToLower().Replace(' ', '_');
+            set => name = value;
         }
         private string name;
 
@@ -24,7 +24,7 @@
         /// <param name="value">The name of the Rule34 Tag.</param>
         public R34TagModel(string value)
         {
-            name = value;
+            name = value.Trim().Replace(' ', '_').ToLower();
         }
 
         /// <summary>
