@@ -57,6 +57,10 @@ namespace R34Sharp
             Limit = 100;
             Tags = Array.Empty<R34TagModel>();
             Deleted = false;
+
+            Id = new();
+            LastId = new();
+            Page = new();
         }
 
         internal string GetTagsString()
