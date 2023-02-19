@@ -19,6 +19,14 @@
         /// <summary>
         /// Construction of the optional value.
         /// </summary>
+        public Optional()
+        {
+            HasValue = false;
+        }
+
+        /// <summary>
+        /// Construction of the optional value.
+        /// </summary>
         /// <param name="value">The value that the current instance will have.</param>
         public Optional(T value)
         {
