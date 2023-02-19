@@ -24,15 +24,7 @@ namespace R34Sharp
         public Optional<int> Id { get; set; }
 
         /// <summary>
-        /// The last post id returned by another Posts request with the same search builder.
-        /// </summary>
-        /// <remarks>
-        /// This field is an optional value and if filled in, only posts subsequent to this post will be returned.
-        /// </remarks>
-        public Optional<int> LastId { get; set; }
-
-        /// <summary>
-        /// The page for searching Posts.
+        /// Search for posts below the chosen number.
         /// </summary>
         /// <remarks>
         /// If this value is filled in, pay attention to the <see cref="R34TagModel"/> of the search, as there may be inconsistency.
@@ -59,7 +51,6 @@ namespace R34Sharp
             Deleted = false;
 
             Id = new();
-            LastId = new();
             Page = new();
         }
 
