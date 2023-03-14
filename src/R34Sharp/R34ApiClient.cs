@@ -48,7 +48,6 @@ namespace R34Sharp
             urlBuilder.AddParameter("limit", searchBuilder.Limit.ToString());
             urlBuilder.AddParameter("tags", searchBuilder.GetTagsString());
 
-            if (searchBuilder.Deleted) urlBuilder.AddParameter("deleted", "show");
             if (searchBuilder.Chunk.HasValue) urlBuilder.AddParameter("pid", searchBuilder.Chunk.Value.ToString());
             if (searchBuilder.Id.HasValue) urlBuilder.AddParameter("id", searchBuilder.Id.Value.ToString());
 

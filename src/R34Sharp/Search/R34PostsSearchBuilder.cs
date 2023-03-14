@@ -38,18 +38,12 @@ namespace R34Sharp
         public required R34TagModel[] Tags { get; set; }
 
         /// <summary>
-        /// The search may return deleted posts.
-        /// </summary>
-        public bool Deleted { get; set; }
-
-        /// <summary>
         /// Build a custom search for Rule34 Posts.
         /// </summary>
         public R34PostsSearchBuilder()
         {
             Limit = 100;
             Tags = Array.Empty<R34TagModel>();
-            Deleted = false;
 
             Id = new();
             Chunk = new();
