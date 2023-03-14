@@ -20,7 +20,7 @@
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageIcon>R34Sharp_Icon.png</PackageIcon>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-		<Version>1.0.2</Version>
+		<Version>1.0.3</Version>
 		<Authors>Starciad</Authors>
 		<PackageProjectUrl>https://github.com/Starciad/R34Sharp</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Starciad/R34Sharp</RepositoryUrl>
