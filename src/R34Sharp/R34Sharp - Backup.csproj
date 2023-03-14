@@ -20,7 +20,7 @@
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageIcon>R34Sharp_Icon.png</PackageIcon>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-		<Version>1.0.3</Version>
+		<Version>1.0.1</Version>
 		<Authors>Starciad</Authors>
 		<PackageProjectUrl>https://github.com/Starciad/R34Sharp</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Starciad/R34Sharp</RepositoryUrl>
@@ -44,6 +44,11 @@
 		</None>
 
 		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+
+		<None Include="..\..\.github\assets\icon\R34Sharp_Icon.png">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>

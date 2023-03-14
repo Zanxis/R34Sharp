@@ -16,10 +16,10 @@ namespace R34Sharp
         /// <summary>
         /// The count of posts present in this collection.
         /// </summary>
-        [XmlAttribute(AttributeName = "count")] public int Count { get; set; }
+        [XmlIgnore] public int Count => Data.Length;
 
         /// <summary>
-        /// 
+        /// The offset of current collection.
         /// </summary>
         [XmlAttribute(AttributeName = "offset")] public int Offset { get; set; }
 
