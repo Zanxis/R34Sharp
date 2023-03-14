@@ -1,6 +1,6 @@
 <br/>
 <div align="center">
-	<img src=".github/assets/logo/R34Sharp_Logo.webp" alt="logo" width="50%" height="50
+	<img src=".github/assets/logo/R34Sharp_Logo.webp" alt="logo" width="50%" height="50%"/>
 </div>
 
 <div align="center">
@@ -10,8 +10,7 @@
 </div>
 
 
-✨ ● WELCOME ● ✨
-===============
+<h1 align="center">✨ ● WELCOME ● ✨</h1>
 
 How deep did you go to find this place? Anyway, welcome to the most complete unofficial .NET Wrapper of the Rule34 API, the place where you will have the complete experience of browsing Rule34, but in code format to automate whatever you want.
 
