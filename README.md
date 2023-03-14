@@ -18,16 +18,16 @@ This wrapper was developed exclusively for the Rule34 site, which means that oth
 `1.` 📩 》 INSTALLATION
 ----------------------
 
-To start using R34Sharp, you will need to download its library, it can be found directly at [Nuget]("https://www.nuget.org/packages/R34Sharp"). When importing the library to your project, you will already be able to use the API as you wish.
+To start using R34Sharp, you will need to download its library, it can be found directly at [Nuget](https://www.nuget.org/packages/R34Sharp). When importing the library to your project, you will already be able to use the API as you wish.
 
 
 `2.` 📚 》 DOCUMENTATION
 -----------------------
 
-You can find documentation of basic API schemas in the docs section by [Clicking Here](""). There, you'll get a reasonably good general sense of how to use the API in your projects.
+You can find documentation of basic API schemas in the docs section by [Clicking Here](./.github/docs/introduction.md). There, you'll get a reasonably good general sense of how to use the API in your projects.
 
 
 `3.` 🔗 》 CREDITS
 -----------------
 
-This Wrapper was independently made by [@starciad](https://github.com/starciad/), to see other projects Click Here to see the full profile.
+This Wrapper was independently made by [@starciad](https://github.com/starciad/).

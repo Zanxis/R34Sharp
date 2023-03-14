@@ -4,7 +4,7 @@
 Welcome to the API client information guide, in this article you will see complete and rich content on how to use it in your project, including its main features.
 
 ## `1.` INTRODUCTION
-With the API referenced in your project and the **R34Sharp** namespace imported into your code, you'll have access to the **[R34ApiClient]("")** class , responsible for providing you, the programmer, with Rule34 API functionality to you.
+With the API referenced in your project and the **R34Sharp** namespace imported into your code, you'll have access to the **R34ApiClient** class, responsible for providing you, the programmer, with Rule34 API functionality to you.
 
 Now, you must instantiate this class so that we can use it for what we want. Once that's done, you should have access to the API's basic functionality.
 
@@ -14,7 +14,7 @@ Now, you must instantiate this class so that we can use it for what we want. Onc
 
 With your client instantiated in code, you now have the ability to make asynchronous requests for specific information in Rule34, which are, respectively:
 
-- [Posts]("")
+- [Posts](./entities/posts.md)
 
 - [Comments]("")
 
