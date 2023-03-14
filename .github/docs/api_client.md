@@ -16,9 +16,9 @@ With your client instantiated in code, you now have the ability to make asynchro
 
 - [Posts](./entities/posts.md)
 
-- [Comments]("")
+- [Comments](./entities/comments.md)
 
-- [Tags]("")
+- [Tags](./entities/tags.md)
 
 Remember that depending on the amount of things requested, the API may be slow and packet loss due to the amount of data being requested.
 
