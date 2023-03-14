@@ -26,12 +26,17 @@ namespace R34Sharp
 
         internal override async Task BuildAsync(R34ApiClient instance)
         {
-            List<Task> tasks = new();
-            foreach (R34Comment comment in Data)
+            try
             {
-                tasks.Add(Task.Run(() => comment.BuildAsync(instance)));
+                await Parallel.ForEachAsync(Data, new Func<R34Comment, CancellationToken, ValueTask>(async (current, token) =>
+                {
+                    await current.BuildAsync(instance);
+                }));
             }
-            Task.WaitAll(tasks.ToArray());
+            catch (Exception e)
+            {
+                await Task.FromException(e);
+            }
 
             await Task.CompletedTask;
         }
