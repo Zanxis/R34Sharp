@@ -16,6 +16,6 @@ Once installed, you can check out the other guides below to get a general idea o
 
 - [Posts](./entities/posts.md) ➥ View information on how to fetch posts and manipulate them according to your needs.
 
-- [Comments](https://github.com/Starciad/R34Sharp) ➥ View information on how to get internal comments for each post.
+- [Comments](./entities/comments.md) ➥ View information on how to get internal comments for each post.
 
-- [Tags](https://github.com/Starciad/R34Sharp) ➥ See general information about the tag system used by the API and how to fetch specific tag information .
+- [Tags](./entities/tags.md) ➥ See general information about the tag system used by the API and how to fetch specific tag information .
