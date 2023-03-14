@@ -9,7 +9,6 @@
 
 </div>
 
-
 <h1 align="center">✨ ● WELCOME ● ✨</h1>
 
 How deep did you go to find this place? Anyway, welcome to the most complete unofficial .NET Wrapper of the Rule34 API, the place where you will have the complete experience of browsing Rule34, but in code format to automate whatever you want.
@@ -19,7 +18,7 @@ This wrapper was developed exclusively for the Rule34 site, which means that oth
 `1.` 📩 》 INSTALLATION
 ----------------------
 
-To start using R34Sharp, you will need to download its library, it can be found directly at [Nuget.org]("https://www.nuget.org/packages/R34Sharp"). When importing the library to your project, you will already be able to use the API as you wish.
+To start using R34Sharp, you will need to download its library, it can be found directly at [Nuget]("https://www.nuget.org/packages/R34Sharp"). When importing the library to your project, you will already be able to use the API as you wish.
 
 
 `2.` 📚 》 DOCUMENTATION
