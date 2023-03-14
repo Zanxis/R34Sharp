@@ -14,14 +14,13 @@
 		<Description>An unofficial .NET Core wrapper for the Rule34 API.</Description>
 		<Company>Starciad</Company>
 		<Copyright>Starciad © 2023</Copyright>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>api;wrapper; csharp; dotnet; dotnet-core; wrapper-api; nsfw; wrapper-library; rule34; rule34-downloader; nsfw-api; rule34api; rule34-api;</PackageTags>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageIcon>R34Sharp_Icon.png</PackageIcon>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<Authors>Starciad</Authors>
 		<PackageProjectUrl>https://github.com/Starciad/R34Sharp</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Starciad/R34Sharp</RepositoryUrl>
