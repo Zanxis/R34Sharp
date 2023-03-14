@@ -28,6 +28,9 @@ namespace R34Sharp
         {
             try
             {
+                if (Data == null)
+                    return;
+
                 await Parallel.ForEachAsync(Data, new Func<R34Comment, CancellationToken, ValueTask>(async (current, token) =>
                 {
                     await current.BuildAsync(instance);
