@@ -71,7 +71,7 @@ To avoid possible errors in your application, you can use the **HasComments** pr
 ### 2.1. Getting feedback from the API client
 The other existing way of getting feedback is using the API client. Once your client is instantiated, you will have access to the async method **GetCommentsAsync** , which like the **GetPostsAsync** method also has a custom lookup constructor.
 
-In this custom constructor (in **GetCommentsAsync** ), you must instantiate a new object and give it the ID of the post you want to get the comments from, in the **PostId** field .
+In this custom constructor (in **GetCommentsAsync** ), you must instantiate a new object and give it the ID of the post you want to get the comments from, in the **PostId** field.
 
 See the example below on how to get the comments through this method:
 

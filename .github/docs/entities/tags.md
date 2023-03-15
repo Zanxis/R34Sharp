@@ -1,9 +1,9 @@
 ﻿<h1 align="center"> ✨ ● RULE34 - TAGS ● ✨ </h1>
 
-Welcome to the article about the API Tags system, here you will find complete information on how to obtain tags and their information, together with any other information that may be useful in the future.
+The Rule34 API tags system is an important feature that allows users to search for posts based on the tags that they have been associated with. Tags are essentially keywords or labels that have been manually added to posts by the community. They describe the content of the post and make it easier for users to find specific types of content.
 
 ## `1.` INTRODUCTION
-To begin with, you must have imported the API namespace in your code: **R34Sharp**, this will give you access to use the **R34ApiClient** client . After that, instantiate a new client in your code and that way, you will be able to obtain tools that will help us to obtain and manipulate tags.
+To begin with, you must have imported the API namespace in your code: **R34Sharp**, this will give you access to use the **R34ApiClient** client. After that, instantiate a new client in your code and that way, you will be able to obtain tools that will help us to obtain and manipulate tags.
 
 See the examples below:
 
@@ -36,7 +36,7 @@ Below is an example of a Tag request:
 R34ApiClient client = new R34ApiClient();
 
 // Making the Tag request
-await client.GetTagsAsync (new R34TagsSearchBuilder()
+await client.GetTagsAsync(new R34TagsSearchBuilder()
 {
     Limit = 1,
     Search = "presenting",
@@ -64,7 +64,7 @@ R34Tags tags = await client.GetTagsAsync (new R34TagsSearchBuilder()
 });
 
 // Reading the name of all Tags found
-foreach (R34Tag tag in tags.Data )
+foreach (R34Tag tag in tags.Data)
 {
     Console.WriteLine(tag.Name);
 }
