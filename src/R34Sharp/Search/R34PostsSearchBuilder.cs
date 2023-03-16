@@ -21,7 +21,7 @@ namespace R34Sharp
         /// <remarks>
         /// This field is an optional value and if filled in, only one post will be returned.
         /// </remarks>
-        public Optional<int> Id { get; set; }
+        public Optional<ulong> Id { get; set; }
 
         /// <summary>
         /// Get a specific chunk of posts from a given number.
