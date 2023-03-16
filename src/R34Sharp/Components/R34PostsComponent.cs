@@ -3,7 +3,7 @@
 namespace R34Sharp
 {
     /// <summary>
-    /// 
+    /// API component responsible for processes involving Rule34 post chains.
     /// </summary>
     public sealed class R34PostsComponent : R34BaseApiComponent
     {

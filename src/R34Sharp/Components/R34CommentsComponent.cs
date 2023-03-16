@@ -3,7 +3,7 @@
 namespace R34Sharp
 {
     /// <summary>
-    /// 
+    /// API component responsible for processes involving Rule34 comments chains.
     /// </summary>
     public sealed class R34CommentsComponent : R34BaseApiComponent
     {
@@ -26,7 +26,5 @@ namespace R34Sharp
             // Get Result
             return await GetAsync<R34Comments>(urlBuilder.Build(), _commentsXmlSerializer);
         }
-
-
     }
 }

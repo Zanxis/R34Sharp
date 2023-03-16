@@ -13,17 +13,22 @@ namespace R34Sharp
         internal HttpClient ApiClient { get; private set; }
 
         /// <summary>
-        /// 
+        /// Checks if this class has already been Disposable.
+        /// </summary>
+        public bool Disposable { get; private set; }
+
+        /// <summary>
+        /// API component responsible for posts.
         /// </summary>
         public R34PostsComponent Posts { get; private set; }
 
         /// <summary>
-        /// 
+        /// API component responsible for tags.
         /// </summary>
         public R34TagsComponent Tags { get; private set; }
 
         /// <summary>
-        /// 
+        /// API component responsible for comments.
         /// </summary>
         public R34CommentsComponent Comments { get; private set; }
 
@@ -47,12 +52,13 @@ namespace R34Sharp
         }
 
         /// <summary>
-        /// 
+        /// Dispose and initiate API client shutdown processes. In addition to relieving memory processes.
         /// </summary>
         public void Dispose()
         {
             ApiClient.Dispose();
 
+            Disposable = true;
             GC.SuppressFinalize(this);
         }
     }

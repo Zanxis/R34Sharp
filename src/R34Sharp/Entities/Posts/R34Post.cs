@@ -37,19 +37,14 @@ namespace R34Sharp
         [XmlIgnore] public DateTime CreatedAt { get; private set; }
 
         /// <summary>
-        /// 
+        /// Dimensions in pixels of the original Post file.
         /// </summary>
         [XmlIgnore] public Vector2 FileDimensions { get; private set; }
 
         /// <summary>
-        /// 
+        /// Dimensions in pixels of the Post preview file.
         /// </summary>
         [XmlIgnore] public Vector2 PreviewFileDimensions { get; private set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [XmlIgnore] public Vector2 SampleFileDimensions { get; private set; }
         #endregion
         #region BODY
         /// <summary>
@@ -208,7 +203,6 @@ namespace R34Sharp
 
             FileDimensions = new(Width, Height);
             PreviewFileDimensions = new(PreviewWidth, PreviewHeight);
-            SampleFileDimensions = new(SampleWidth, SampleHeight);
 
             await Task.CompletedTask;
         }
@@ -269,6 +263,7 @@ namespace R34Sharp
         {
             return await Task.FromResult(await DownloadAsync(PreviewUrl));
         }
+
         private async Task<MemoryStream> DownloadAsync(string url)
         {
             MemoryStream ms = new();
