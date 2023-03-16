@@ -214,6 +214,32 @@ namespace R34Sharp
         }
 
         /// <summary>
+        /// Checks if the post in question has the specified Tag.
+        /// </summary>
+        /// <param name="tag">The tag to fetch.</param>
+        /// <returns>True if the Tag is found.</returns>
+        public bool HasTag(R34TagModel tag)
+        {
+            return Array.Find(Tags, x => x.Name == tag.Name) != null;
+        }
+
+        /// <summary>
+        /// Checks that all specified tags exist in this post.
+        /// </summary>
+        /// <param name="tags">The tags to be fetch.</param>
+        /// <returns>True if all Tags are found.</returns>
+        public bool HasTags(R34TagModel[] tags)
+        {
+            foreach (R34TagModel tag in tags)
+            {
+                if (!HasTag(tag))
+                    return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Get all comments present on this Post.
         /// </summary>
         /// <returns>All comments on the post.</returns>
