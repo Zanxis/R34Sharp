@@ -45,7 +45,7 @@ To get comments directly from a post, just make a post request and use **GetComm
 R34ApiClient client = new R34ApiClient();
 
 // Making a request
-R34Posts posts = await client.GetPostsAsync(new()
+R34Posts posts = await client.Posts.GetPostsAsync(new()
 {
 	Limit = 1,
 	Tags = new R34TagModel[]
@@ -83,7 +83,7 @@ See the example below on how to get the comments through this method:
 R34ApiClient client = new R34ApiClient();
 
 // Search the post comments below
-await client.GetCommentsAsync(new R34CommentsSearchBuilder()
+await client.Comments.GetCommentsAsync(new R34CommentsSearchBuilder()
 {
 	PostId = 0,
 });

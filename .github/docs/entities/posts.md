@@ -38,13 +38,13 @@ See a step-by-step example below on how to perform searches using this method:
 R34ApiClient client = new R34ApiClient();
 
 // With the class instantiated, reference it and call the GetPostsAsync method;
-await client.GetPostsAsync();
+await client.Posts.GetPostsAsync();
 
 // The method described above receives a class called "R34PostsSearchBuilder", create a new instance of this class in the method so that it receives it as a parameter.
-await client.GetPostsAsync(new R34PostsSearchBuilder());
+await client.Posts.GetPostsAsync(new R34PostsSearchBuilder());
 
 // Once that's done, you can now define search rules.
-await client.GetPostsAsync(new R34PostsSearchBuilder()
+await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 {
 	Limit = 1000,
 	Tags = new R34TagModel[] {
@@ -70,7 +70,7 @@ In order to obtain information from each post, we can place the **Data** field i
 - _Example of code that obtains the results of the request;_
 ```cs
 // Make the request
-R34Posts posts = await client.GetPostsAsync(new R34PostsSearchBuilder()
+R34Posts posts = await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 {
 	Limit = 1000,
 	Tags = new R34TagModel[] {
@@ -107,7 +107,7 @@ using System.Linq;
 - _Example of post filtering;_
 ```cs
 // Execution of the request.
-R34Posts posts = await client.GetPostsAsync(new R34PostsSearchBuilder()
+R34Posts posts = await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 {
 	Limit = 1000,
 	Tags = new R34TagModel[] {
@@ -141,7 +141,7 @@ Chunks is a simple way to fetch a bunch of posts beyond the established limit wi
 // Define a polling loop.
 for(int i = 0; i < 2; i++)
 {
-	R34Posts posts1 = await client.GetPostsAsync(new R34PostsSearchBuilder()
+	R34Posts posts1 = await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 	{
 		Limit = 1000,
 		Tags = new R34TagModel[] {
@@ -174,7 +174,7 @@ See the example below, which downloads all posts made in one request:
 - _Downloading media content in requested Posts._
 ```cs
 // Execution of the request.
-R34Posts posts = await client.GetPostsAsync(new R34PostsSearchBuilder()
+R34Posts posts = await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 {
 	Limit = 10,
 	Tags = new R34TagModel[] {

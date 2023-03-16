@@ -36,7 +36,7 @@ Below is an example of a Tag request:
 R34ApiClient client = new R34ApiClient();
 
 // Making the Tag request
-await client.GetTagsAsync(new R34TagsSearchBuilder()
+await client.Tags.GetTagsAsync(new R34TagsSearchBuilder()
 {
     Limit = 1,
     Search = "presenting",
@@ -56,7 +56,7 @@ See the example below using a ForEach method to see the information of each retu
 R34ApiClient client = new R34ApiClient();
 
 // Making the Tag request
-R34Tags tags = await client.GetTagsAsync (new R34TagsSearchBuilder()
+R34Tags tags = await client.Tags.GetTagsAsync(new R34TagsSearchBuilder()
 {
     Limit = 1,
     Search = "presenting",
