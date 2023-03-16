@@ -15,7 +15,7 @@ namespace R34Sharp
         [XmlElement(ElementName = "comment")] public R34Comment[] Data { get; set; }
 
         /// <summary>
-        /// 
+        /// The collection type.
         /// </summary>
         [XmlAttribute(AttributeName = "type")] public string Type { get; set; }
 
