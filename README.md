@@ -11,23 +11,29 @@
 
 <h1 align="center">✨ ● WELCOME ● ✨</h1>
 
-How deep did you go to find this place? Anyway, welcome to the most complete unofficial .NET Wrapper of the Rule34 API, the place where you will have the complete experience of browsing Rule34, but in code format to automate whatever you want.
+**Wow, you must have gone to great lengths to find this API! But fear not, my friend, for you have stumbled upon the most comprehensive unofficial .NET Wrapper for the Rule34 API.** This incredible tool allows you to browse the vast offerings of Rule34 in code format, empowering you to automate whatever your heart desires.
 
-This wrapper was developed exclusively for the Rule34 site, which means that other Booru sites are not supported yet. However, you will have access to all post, tag and comment search features, as well as efficient and customizable navigation. The wrapper also provides simple methods for downloading posts and other content.
+Designed exclusively for Rule34, this wrapper boasts a plethora of features, including the ability to search through posts, tags, and comments, all while enjoying customizable and efficient navigation. Plus, it even comes equipped with simple methods for downloading posts and other content!
+
+It's important to note that, while Rule34 reigns supreme, this wrapper does not yet support other Booru sites. But fear not, because with the Rule34 API at your fingertips, you'll have everything you need for a truly unforgettable browsing experience.
+
+<br/>
 
 `1.` 📩 》 INSTALLATION
 ----------------------
 
-To start using R34Sharp, you will need to download its library, it can be found directly at [Nuget](https://www.nuget.org/packages/R34Sharp). When importing the library to your project, you will already be able to use the API as you wish.
+Ready to dive into the wonderful world of **R34Sharp?** Getting started is a breeze - simply download the library from [Nuget](https://www.nuget.org/packages/R34Sharp) and import it into your project. Once the library is integrated, you're free to use the API in whatever way you see fit. It's that easy!
 
+<br/>
 
 `2.` 📚 》 DOCUMENTATION
 -----------------------
 
-You can find documentation of basic API schemas in the docs section by [Clicking Here](./.github/docs/introduction.md). There, you'll get a reasonably good general sense of how to use the API in your projects.
+Looking for more information on the basic API schemas? Look no further than our comprehensive docs section! **[Click Here](./.github/docs/introduction.md)** to gain access to all the knowledge you'll need to get started with the API in your projects. With this resource at your fingertips, you'll have a solid understanding of how to use the API in no time."
 
+<br/>
 
 `3.` 🔗 》 CREDITS
 -----------------
 
-This Wrapper was independently made by [@starciad](https://github.com/starciad/).
+*Who's behind this incredible API, you ask?* None other than the illustrious [@starciad](https://github.com/starciad/)! If you're interested in checking out some of their other projects, be sure to take a peek at their profile. You won't be disappointed!

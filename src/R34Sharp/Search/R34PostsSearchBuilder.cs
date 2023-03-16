@@ -21,7 +21,7 @@ namespace R34Sharp
         /// <remarks>
         /// This field is an optional value and if filled in, only one post will be returned.
         /// </remarks>
-        public Optional<int> Id { get; set; }
+        public Optional<ulong> Id { get; set; }
 
         /// <summary>
         /// Get a specific chunk of posts from a given number.
@@ -35,7 +35,7 @@ namespace R34Sharp
         /// <summary>
         /// The tags that will be used for the search.
         /// </summary>
-        public required R34TagModel[] Tags { get; set; }
+        public required IEnumerable<R34TagModel> Tags { get; set; }
 
         /// <summary>
         /// Build a custom search for Rule34 Posts.
@@ -51,13 +51,16 @@ namespace R34Sharp
 
         internal string GetTagsString()
         {
+            int length = Tags.Count();
+
             StringBuilder tagsString = new();
-            for (int i = 0; i < Tags.Length; i++)
+            for (int i = 0; i < length; i++)
             {
-                R34TagModel tag = Tags[i];
+                R34TagModel tag = Tags.ElementAtOrDefault(i);
+                if (tag == null) continue;
 
                 _ = tagsString.Append(tag.Name);
-                if (i < Tags.Length - 1)
+                if (i < length - 1)
                 {
                     _ = tagsString.Append('+');
                 }

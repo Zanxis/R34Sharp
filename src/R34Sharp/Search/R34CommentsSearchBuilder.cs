@@ -8,7 +8,7 @@
         /// <summary>
         /// The ID of the post.
         /// </summary>
-        public required int PostId { get; set; }
+        public required ulong PostId { get; set; }
 
         /// <summary>
         /// Build a custom search for Rule34 post comments.

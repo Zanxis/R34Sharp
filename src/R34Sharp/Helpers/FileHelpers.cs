@@ -12,14 +12,14 @@
             ".mp4", ".mkv", ".avi", ".wmv", ".mov"
         };
 
-        internal static FileMediaType GetMediaType(string extension)
+        internal static FileType GetMediaType(string extension)
         {
             string imageResult = Array.Find(ImageExtensions, x => x == extension);
             string videoResult = Array.Find(VideoExtensions, x => x == extension);
 
             return !string.IsNullOrEmpty(imageResult)
-                ? FileMediaType.Image
-                : !string.IsNullOrEmpty(videoResult) ? FileMediaType.Video : FileMediaType.Unknown;
+                ? FileType.Image
+                : !string.IsNullOrEmpty(videoResult) ? FileType.Video : FileType.Unknown;
         }
     }
 }

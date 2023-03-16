@@ -17,7 +17,7 @@ namespace R34Sharp
         /// <summary>
         /// The ID of the tag.
         /// </summary>
-        [XmlAttribute(AttributeName = "id")] public int Id { get; set; }
+        [XmlAttribute(AttributeName = "id")] public ulong Id { get; set; }
 
         /// <summary>
         /// Returns if the tag is ambiguous.
@@ -27,7 +27,7 @@ namespace R34Sharp
         /// <summary>
         /// Returns the tag type.
         /// </summary>
-        [XmlAttribute(AttributeName = "type")] public int TypeId { get; set; }
+        [XmlAttribute(AttributeName = "type")] public ulong TypeId { get; set; }
 
         /// <summary>
         /// Count of posts with this tag.

@@ -3,7 +3,7 @@
     /// <summary>
     /// Media type of a file.
     /// </summary>
-    public enum FileMediaType
+    public enum FileType
     {
         /// <summary>
         /// File with unknown extension or not registered in the API

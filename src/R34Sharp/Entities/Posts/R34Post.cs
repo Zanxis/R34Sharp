@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Numerics;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 namespace R34Sharp
@@ -23,7 +24,7 @@ namespace R34Sharp
         /// <summary>
         /// The Post file type.
         /// </summary>
-        [XmlIgnore] public FileMediaType FileMediaType { get; private set; }
+        [XmlIgnore] public FileType FileType { get; private set; }
 
         /// <summary>
         /// All tags present in the Post.
@@ -34,13 +35,22 @@ namespace R34Sharp
         /// Date and time the post was published.
         /// </summary>
         [XmlIgnore] public DateTime CreatedAt { get; private set; }
-        #endregion
 
+        /// <summary>
+        /// Dimensions in pixels of the original Post file.
+        /// </summary>
+        [XmlIgnore] public Vector2 FileDimensions { get; private set; }
+
+        /// <summary>
+        /// Dimensions in pixels of the Post preview file.
+        /// </summary>
+        [XmlIgnore] public Vector2 PreviewFileDimensions { get; private set; }
+        #endregion
         #region BODY
         /// <summary>
         /// The post ID.
         /// </summary>
-        [XmlAttribute(AttributeName = "id")] public int Id { get; set; }
+        [XmlAttribute(AttributeName = "id")] public ulong Id { get; set; }
 
         /// <summary>
         /// The ID of the parent post.
@@ -50,7 +60,7 @@ namespace R34Sharp
         /// <summary>
         /// The post creator ID.
         /// </summary>
-        [XmlAttribute(AttributeName = "creator_id")] public int CreatorId { get; set; }
+        [XmlAttribute(AttributeName = "creator_id")] public ulong CreatorId { get; set; }
 
         /// <summary>
         /// Post file url.
@@ -110,7 +120,7 @@ namespace R34Sharp
         /// <summary>
         /// Number of changes the post has had.
         /// </summary>
-        [XmlAttribute(AttributeName = "change")] public int Change { get; set; }
+        [XmlAttribute(AttributeName = "change")] public int ChangesCount { get; set; }
 
         /// <summary>
         /// MD5 hash of the post.
@@ -125,7 +135,7 @@ namespace R34Sharp
         /// <summary>
         /// The site from which the Post file originated.
         /// </summary>
-        [XmlAttribute(AttributeName = "source")] public string Source { get; set; }
+        [XmlAttribute(AttributeName = "source")] public string SourceWebsite { get; set; }
 
         /// <summary>
         /// String of all Tags present in the Post.
@@ -153,40 +163,74 @@ namespace R34Sharp
         [XmlAttribute(AttributeName = "status")] public string Status { get; set; }
         #endregion
 
-
         /// <summary>
+        /// 
         /// </summary>
         protected override async Task OnBuildAsync()
         {
-            SetFilesInfos();
-            SetTags();
-            SetInfos();
+            await SetFilesInfosAsync();
+            await SetTagsAsync();
+            await SetInfosAsync();
 
             await Task.CompletedTask;
         }
-        private void SetFilesInfos()
+        private async Task SetFilesInfosAsync()
         {
-            string fileInfos = FileUrl.Split('/').Last();
+            FileName = Path.GetFileNameWithoutExtension(FileUrl);
+            FileExtension = Path.GetExtension(FileUrl);
+            FileType = FileHelpers.GetMediaType(FileExtension);
 
-            FileName = Path.GetFileNameWithoutExtension(fileInfos);
-            FileExtension = Path.GetExtension(fileInfos);
-            FileMediaType = FileHelpers.GetMediaType(FileExtension);
+            await Task.CompletedTask;
         }
-        private void SetTags()
+        private async Task SetTagsAsync()
         {
-            string[] tagsArray = TagsString.Split(' ');
-            R34TagModel[] tags = new R34TagModel[tagsArray.Length];
-
-            for (int i = 0; i < tagsArray.Length; i++)
+            await Task.Run(() =>
             {
-                tags[i] = new(tagsArray[i]);
-            }
+                string[] tagsArray = TagsString.Split(' ');
+                R34TagModel[] tags = new R34TagModel[tagsArray.Length];
 
-            Tags = tags;
+                for (int i = 0; i < tagsArray.Length; i++)
+                {
+                    tags[i] = new(tagsArray[i]);
+                }
+
+                Tags = tags;
+            });
         }
-        private void SetInfos()
+        private async Task SetInfosAsync()
         {
             CreatedAt = DateTimeHelpers.R34Parse(CreatedAtString, "ddd MMM dd HH:mm:ss zzz yyyy");
+
+            FileDimensions = new(Width, Height);
+            PreviewFileDimensions = new(PreviewWidth, PreviewHeight);
+
+            await Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// Checks if the post in question has the specified Tag.
+        /// </summary>
+        /// <param name="tag">The tag to fetch.</param>
+        /// <returns>True if the Tag is found.</returns>
+        public bool HasTag(R34TagModel tag)
+        {
+            return Array.Find(Tags, x => x.Name == tag.Name) != null;
+        }
+
+        /// <summary>
+        /// Checks that all specified tags exist in this post.
+        /// </summary>
+        /// <param name="tags">The tags to be fetch.</param>
+        /// <returns>True if all Tags are found.</returns>
+        public bool HasTags(R34TagModel[] tags)
+        {
+            foreach (R34TagModel tag in tags)
+            {
+                if (!HasTag(tag))
+                    return false;
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -199,7 +243,7 @@ namespace R34Sharp
             if (HasComments)
                 await Task.FromException(new InvalidOperationException("The post has no comments."));
 
-            return await Task.FromResult(await R34Client.GetCommentsAsync(new() { PostId = Id }));
+            return await Task.FromResult(await R34Client.Comments.GetCommentsAsync(new() { PostId = Id }));
         }
 
         /// <summary>

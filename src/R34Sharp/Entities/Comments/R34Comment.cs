@@ -15,7 +15,6 @@ namespace R34Sharp
         /// </summary>
         [XmlIgnore] public DateTime CreatedAt { get; private set; }
         #endregion
-
         #region FILE
         /// <summary>
         /// The ID of comment.

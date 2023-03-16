@@ -1,13 +1,11 @@
 ﻿<br/>
 <h1 align="center"> ✨ ● RULE34 - POSTS ● ✨ </h1>
 
-Welcome to the section related to the posts provided to you for information search and management, in this article you will be presented with a series of information that can be used in your applications, together with general development ideas.
-
-> Several sample codes will also be presented to help you in your development!
+Welcome to the posts section of the R34Sharp API. Here you'll find a wealth of information and tools to help you search for and manage posts in your applications. In this article, we'll provide you with the necessary information to get started, as well as some general development ideas to help you utilize the API to its fullest potential.
 
 ## `1.` SEARCHING FOR POSTS
 
-We will start by introducing you to simple and complete concepts related to searching and looking for posts in a simple and basic way. In your code, import the **R34Sharp** namespace so that you have access to the **R34ApiClient** class , as follows:
+We will start by introducing you to simple and complete concepts related to searching and looking for posts in a simple and basic way. In your code, import the **R34Sharp** namespace so that you have access to the **R34ApiClient** class, as follows:
 
 <br/>
 
@@ -40,13 +38,13 @@ See a step-by-step example below on how to perform searches using this method:
 R34ApiClient client = new R34ApiClient();
 
 // With the class instantiated, reference it and call the GetPostsAsync method;
-await client.GetPostsAsync();
+await client.Posts.GetPostsAsync();
 
 // The method described above receives a class called "R34PostsSearchBuilder", create a new instance of this class in the method so that it receives it as a parameter.
-await client.GetPostsAsync(new R34PostsSearchBuilder());
+await client.Posts.GetPostsAsync(new R34PostsSearchBuilder());
 
 // Once that's done, you can now define search rules.
-await client.GetPostsAsync(new R34PostsSearchBuilder()
+await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 {
 	Limit = 1000,
 	Tags = new R34TagModel[] {
@@ -62,7 +60,7 @@ Note that R34PostsSearchBuilder has several fields that can be filled in to deli
 ## `2.` POST INFORMATION
 In the previous topic, notice that a request was made using the asynchronous method **GetPostsAsync** , however, how can we get the result of the request? Simple!
 
-The method responsible for the request returns an object of type **R34Posts** , which contains general information about the returned posts, the main one (the posts) being stored in **Data** .
+The method responsible for the request returns an object of type **R34Posts** , which contains general information about the returned posts, the main one (the posts) being stored in **Data**.
 
 In order to obtain information from each post, we can place the **Data** field in a ForEach loop, which will go through each element of the collection, as in the example below:
 
@@ -72,7 +70,7 @@ In order to obtain information from each post, we can place the **Data** field i
 - _Example of code that obtains the results of the request;_
 ```cs
 // Make the request
-R34Posts posts = await client.GetPostsAsync(new R34PostsSearchBuilder()
+R34Posts posts = await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 {
 	Limit = 1000,
 	Tags = new R34TagModel[] {
@@ -95,7 +93,7 @@ foreach(R34Post post in posts.Data)
 
 Eventually, it may be useful to filter posts based on specific conditions, for example, you only want videos instead of images, and for that, you can use the system library **System.Linq** to filter all types of posts. contents.
 
-Observe the example below and see that, using the **Where** method , I filter all the contents of the request to only have videos.
+Observe the example below and see that, using the **Where** method, I filter all the contents of the request to only have videos.
 
 <br/>
 
@@ -109,7 +107,7 @@ using System.Linq;
 - _Example of post filtering;_
 ```cs
 // Execution of the request.
-R34Posts posts = await client.GetPostsAsync(new R34PostsSearchBuilder()
+R34Posts posts = await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 {
 	Limit = 1000,
 	Tags = new R34TagModel[] {
@@ -132,7 +130,7 @@ foreach (R34Post post in filteredPosts)
 With this example, you can observe the amount of possibilities that are provided to you for your own manipulation of posts.
 
 ## `4.` SEARCHING FOR POST CHUNK
-As you develop and create new things, it might be interesting to go beyond 1000 posts, let's assume you want to request 2000 posts this time, how could you do that if the allowed limit is 1000? Simple, using **Search Chunks** .
+As you develop and create new things, it might be interesting to go beyond 1000 posts, let's assume you want to request 2000 posts this time, how could you do that if the allowed limit is 1000? Simple, using **Search Chunks**.
 
 Chunks is a simple way to fetch a bunch of posts beyond the established limit without incurring API overhead and in a simpler way to happen. You can define a chunk when instantiating the search, as in the example below:
 
@@ -143,7 +141,7 @@ Chunks is a simple way to fetch a bunch of posts beyond the established limit wi
 // Define a polling loop.
 for(int i = 0; i < 2; i++)
 {
-	R34Posts posts1 = await client.GetPostsAsync(new R34PostsSearchBuilder()
+	R34Posts posts1 = await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 	{
 		Limit = 1000,
 		Tags = new R34TagModel[] {
@@ -176,7 +174,7 @@ See the example below, which downloads all posts made in one request:
 - _Downloading media content in requested Posts._
 ```cs
 // Execution of the request.
-R34Posts posts = await client.GetPostsAsync(new R34PostsSearchBuilder()
+R34Posts posts = await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 {
 	Limit = 10,
 	Tags = new R34TagModel[] {
@@ -197,4 +195,6 @@ foreach (R34Post post in filteredPosts)
 
 <br/>
 
-> ⚠ Remember that the posts present in Rule34 can have very different sizes, from files containing KBs to GBs, in this case, be aware that there may be a significant delay in Downloading the resource, especially if there are instabilities in the network.
+It's important to note that downloading large files from the Rule34 API can take a significant amount of time and may also consume a lot of bandwidth. Therefore, it's recommended to have a stable and fast internet connection before attempting to download any large files.
+
+Additionally, it's advisable to implement some sort of progress monitoring feature to let the user know the current status of the download process, and also to implement error handling mechanisms in case the download fails or gets interrupted.
