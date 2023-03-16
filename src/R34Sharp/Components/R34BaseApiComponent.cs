@@ -2,6 +2,9 @@
 
 namespace R34Sharp
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class R34BaseApiComponent
     {
         /// <summary>

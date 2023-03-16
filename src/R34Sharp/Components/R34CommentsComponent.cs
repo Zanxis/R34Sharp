@@ -2,9 +2,12 @@
 
 namespace R34Sharp
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public sealed class R34CommentsComponent : R34BaseApiComponent
     {
-        private readonly XmlSerializer _commentsXmlSerializer = new(typeof(R34Comments));
+        private static readonly XmlSerializer _commentsXmlSerializer = new(typeof(R34Comments));
 
         /// <summary>
         /// Get comments for given Rule34 post based on a <see cref="R34CommentsSearchBuilder"/>.

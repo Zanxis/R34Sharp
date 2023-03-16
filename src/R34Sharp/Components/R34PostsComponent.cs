@@ -2,9 +2,12 @@
 
 namespace R34Sharp
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public sealed class R34PostsComponent : R34BaseApiComponent
     {
-        private readonly XmlSerializer _postsXmlSerializer = new(typeof(R34Posts));
+        private static readonly XmlSerializer _postsXmlSerializer = new(typeof(R34Posts));
 
         /// <summary>
         /// Get Rule34 posts based on a <see cref="R34PostsSearchBuilder"/>.
