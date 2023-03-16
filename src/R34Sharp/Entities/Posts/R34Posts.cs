@@ -16,7 +16,7 @@ namespace R34Sharp
         /// <summary>
         /// The count of posts present in this collection.
         /// </summary>
-        [XmlIgnore] public int Count => Data.Length;
+        [XmlIgnore] public int Count => Data == null ? 0 : Data.Length;
 
         /// <summary>
         /// The offset of current collection.
