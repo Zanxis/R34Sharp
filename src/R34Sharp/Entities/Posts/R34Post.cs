@@ -187,6 +187,7 @@ namespace R34Sharp
         private void SetInfos()
         {
             CreatedAt = DateTimeHelpers.R34Parse(CreatedAtString, "ddd MMM dd HH:mm:ss zzz yyyy");
+
         }
 
         /// <summary>
@@ -199,7 +200,7 @@ namespace R34Sharp
             if (HasComments)
                 await Task.FromException(new InvalidOperationException("The post has no comments."));
 
-            return await Task.FromResult(await R34Client.GetCommentsAsync(new() { PostId = Id }));
+            return await Task.FromResult(await R34Client.Comments.GetCommentsAsync(new() { PostId = Id }));
         }
 
         /// <summary>
