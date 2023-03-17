@@ -24,13 +24,13 @@ namespace R34Sharp
         public Optional<ulong> Id { get; set; }
 
         /// <summary>
-        /// Get a specific chunk of posts from a given number.
+        /// Get a specific offset of posts from a given number.
         /// </summary>
         /// <remarks>
-        /// To find a specific set of posts in a search, you can use "chunks" to find the posts following the number of chunks already searched. For example, if you've searched the last 1000 posts and want to get the next posts without overloading the search, you can set the number of "chunks" to "1" and so on. It's important to remember that "chunks" are directly related to the number of posts that will be searched. <br/><br/>
+        /// To find a specific set of posts in a search, you can use "offsets" to find the posts following the number of offsets already searched. For example, if you've searched the last 1000 posts and want to get the next posts without overloading the search, you can set the number of "offsets" to "1" and so on. It's important to remember that "offsets" are directly related to the number of posts that will be searched. <br/><br/>
         /// If this value is filled in, pay attention to the <see cref="R34TagModel"/> of the search, as there may be inconsistency.
         /// </remarks>
-        public Optional<int> Chunk { get; set; }
+        public Optional<int> Offset { get; set; }
 
         /// <summary>
         /// The tags that will be used for the search.
@@ -46,7 +46,7 @@ namespace R34Sharp
             Tags = Array.Empty<R34TagModel>();
 
             Id = new();
-            Chunk = new();
+            Offset = new();
         }
 
         internal string GetTagsString()

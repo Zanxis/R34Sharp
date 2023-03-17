@@ -29,7 +29,7 @@ namespace R34Sharp
             urlBuilder.AddParameter("limit", searchBuilder.Limit.ToString());
             urlBuilder.AddParameter("tags", searchBuilder.GetTagsString());
 
-            if (searchBuilder.Chunk.HasValue) urlBuilder.AddParameter("pid", searchBuilder.Chunk.Value.ToString());
+            if (searchBuilder.Offset.HasValue) urlBuilder.AddParameter("pid", searchBuilder.Offset.Value.ToString());
             if (searchBuilder.Id.HasValue) urlBuilder.AddParameter("id", searchBuilder.Id.Value.ToString());
 
             // Get Result
@@ -40,7 +40,7 @@ namespace R34Sharp
         /// Get a complete list of posts based on the type of media required, such as images or videos.
         /// </summary>
         /// <remarks>
-        /// Unlike GetPostsAsync, this method will try to search for content indefinitely until it reaches the required file limit. For example, if you requested 1000 videos, this method will make requests indefinitely, in chunks of 1 post at a time, until it completes the 1000 videos or until there is no more content available. Due to its nature, this method may experience an imminent drop in performance or a longer time than normal to complete a request, use it wisely.
+        /// Unlike GetPostsAsync, this method will try to search for content indefinitely until it reaches the required file limit. For example, if you requested 1000 videos, this method will make requests indefinitely, in offsets of 1 post at a time, until it completes the 1000 videos or until there is no more content available. Due to its nature, this method may experience an imminent drop in performance or a longer time than normal to complete a request, use it wisely.
         /// </remarks>
         /// <param name="searchBuilder">Search builder for Rule34 Posts.</param>
         /// <param name="type">The required media file type.</param>
@@ -58,7 +58,7 @@ namespace R34Sharp
             // Requests
             while (true)
             {
-                searchBuilder.Chunk = new(searchBuilder.Chunk.Value + currentChunk);
+                searchBuilder.Offset = new(searchBuilder.Offset.Value + currentChunk);
                 R34Posts posts = await GetPostsAsync(searchBuilder);
 
                 if (posts == null || posts.Data == null || posts.Count == 0) break;
@@ -73,7 +73,7 @@ namespace R34Sharp
             return new()
             {
                 Data = foundPosts.Take(searchBuilder.Limit).ToArray(),
-                Offset = searchBuilder.Limit * (searchBuilder.Chunk.Value + currentChunk),
+                Offset = (searchBuilder.Offset.Value + currentChunk) / 2,
             };
         }
     }
