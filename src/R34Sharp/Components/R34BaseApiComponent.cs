@@ -30,10 +30,8 @@ namespace R34Sharp
 
             try
             {
-                using StringReader reader = new(await ApiClient.ApiClient.GetStringAsync(url));
-
-                result = await Task.Run(() => (T)serializer.Deserialize(reader));
-                await Task.Run(() => result.BuildAsync(ApiClient));
+                result = await Task.Run(async () => (T)serializer.Deserialize(new StringReader(await ApiClient.ApiClient.GetStringAsync(url))));
+                await result.BuildAsync(ApiClient);
             }
             catch (Exception ex)
             {

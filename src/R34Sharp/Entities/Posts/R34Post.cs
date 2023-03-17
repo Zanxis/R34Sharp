@@ -1,5 +1,8 @@
-﻿using System.Numerics;
-using System.Runtime.Serialization;
+﻿using System.Collections.Concurrent;
+using System.Numerics;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace R34Sharp
@@ -10,7 +13,6 @@ namespace R34Sharp
     [XmlRoot(ElementName = "post")]
     public class R34Post : R34Entity
     {
-        #region HEADER
         /// <summary>
         /// The filename of the Post.
         /// </summary>
@@ -27,11 +29,6 @@ namespace R34Sharp
         [XmlIgnore] public FileType FileType { get; private set; }
 
         /// <summary>
-        /// All tags present in the Post.
-        /// </summary>
-        [XmlIgnore] public R34TagModel[] Tags { get; private set; }
-
-        /// <summary>
         /// Date and time the post was published.
         /// </summary>
         [XmlIgnore] public DateTime CreatedAt { get; private set; }
@@ -45,8 +42,7 @@ namespace R34Sharp
         /// Dimensions in pixels of the Post preview file.
         /// </summary>
         [XmlIgnore] public Vector2 PreviewFileDimensions { get; private set; }
-        #endregion
-        #region BODY
+
         /// <summary>
         /// The post ID.
         /// </summary>
@@ -161,15 +157,10 @@ namespace R34Sharp
         /// The status of the Post.
         /// </summary>
         [XmlAttribute(AttributeName = "status")] public string Status { get; set; }
-        #endregion
 
-        /// <summary>
-        /// 
-        /// </summary>
         protected override async Task OnBuildAsync()
         {
             await SetFilesInfosAsync();
-            await SetTagsAsync();
             await SetInfosAsync();
 
             await Task.CompletedTask;
@@ -182,21 +173,6 @@ namespace R34Sharp
 
             await Task.CompletedTask;
         }
-        private async Task SetTagsAsync()
-        {
-            await Task.Run(() =>
-            {
-                string[] tagsArray = TagsString.Split(' ');
-                R34TagModel[] tags = new R34TagModel[tagsArray.Length];
-
-                for (int i = 0; i < tagsArray.Length; i++)
-                {
-                    tags[i] = new(tagsArray[i]);
-                }
-
-                Tags = tags;
-            });
-        }
         private async Task SetInfosAsync()
         {
             CreatedAt = DateTimeHelpers.R34Parse(CreatedAtString, "ddd MMM dd HH:mm:ss zzz yyyy");
@@ -208,13 +184,35 @@ namespace R34Sharp
         }
 
         /// <summary>
+        /// Return all existing tags in the post as <see cref="R34TagModel"/> objects.
+        /// </summary>
+        /// <returns>
+        /// Collection of post tags.
+        /// </returns>
+        public async Task<IEnumerable<R34TagModel>> GetTagsAsync()
+        {
+            string[] tagsArray = TagsString.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            ConcurrentBag<R34TagModel> tags = new();
+
+            await Parallel.ForEachAsync(tagsArray, async (item, token) =>
+            {
+                await Task.Yield();
+
+                R34TagModel tag = new(item);
+                tags.Add(tag);
+            });
+
+            return tags.ToArray();
+        }
+
+        /// <summary>
         /// Checks if the post in question has the specified Tag.
         /// </summary>
         /// <param name="tag">The tag to fetch.</param>
         /// <returns>True if the Tag is found.</returns>
         public bool HasTag(R34TagModel tag)
         {
-            return Array.Find(Tags, x => x.Name == tag.Name) != null;
+            return Array.Find(TagsString.Split(' ', StringSplitOptions.RemoveEmptyEntries), x => x == tag.Name) != null;
         }
 
         /// <summary>
@@ -273,7 +271,7 @@ namespace R34Sharp
             await fileStream.CopyToAsync(ms);
 
             // Return Stream 
-            return await Task.FromResult(ms);
+            return ms;
         }
     }
 }
