@@ -129,14 +129,14 @@ foreach (R34Post post in filteredPosts)
 
 With this example, you can observe the amount of possibilities that are provided to you for your own manipulation of posts.
 
-## `4.` SEARCHING FOR POST CHUNK
-As you develop and create new things, it might be interesting to go beyond 1000 posts, let's assume you want to request 2000 posts this time, how could you do that if the allowed limit is 1000? Simple, using **Search Chunks**.
+## `4.` SEARCHING FOR POST OFFSET
+As you develop and create new things, it might be interesting to go beyond 1000 posts, let's assume you want to request 2000 posts this time, how could you do that if the allowed limit is 1000? Simple, using **Search Offsets**.
 
-Chunks is a simple way to fetch a bunch of posts beyond the established limit without incurring API overhead and in a simpler way to happen. You can define a chunk when instantiating the search, as in the example below:
+Offsets is a simple way to fetch a bunch of posts beyond the established limit without incurring API overhead and in a simpler way to happen. You can define a chunk when instantiating the search, as in the example below:
 
 <br/>
 
-- _Defining search chunks._
+- _Defining search offsets._
 ```cs
 // Define a polling loop.
 for(int i = 0; i < 2; i++)
@@ -148,17 +148,17 @@ for(int i = 0; i < 2; i++)
 			new R34TagModel("Bowser"),
 		},
 
-		// Defines the chunk to be searched.
-		Chunk = new Optional<int>(i),
+		// Defines the offset to be searched.
+		Offset = new Optional<int>(i),
 	});
 }
 ```
 
 <br/>
 
-See that in the example above, the search takes place within a loop that, through the iterator (i), merges other chunks in the search, resulting in:
+See that in the example above, the search takes place within a loop that, through the iterator (i), merges other offsets in the search, resulting in:
 
-- When chunks is set to 0 (default value), the search fetches the first Xth posts requested, when chunks is set to 1, the search fetches the Xth posts after the previous search, and so on.
+- When offsets is set to 0 (default value), the search fetches the first Xth posts requested, when offsets is set to 1, the search fetches the Xth posts after the previous search, and so on.
 
 That way, you might get more posts than the allowed limit.
 
