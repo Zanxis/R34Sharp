@@ -64,6 +64,11 @@ namespace R34Sharp
         [XmlAttribute(AttributeName = "file_url")] public string FileUrl { get; set; }
 
         /// <summary>
+        /// Post file simple url.
+        /// </summary>
+        [XmlAttribute(AttributeName = "sample_url")] public string SampleUrl { get; set; }
+
+        /// <summary>
         /// Post preview file url.
         /// </summary>
         [XmlAttribute(AttributeName = "preview_url")] public string PreviewUrl { get; set; }
