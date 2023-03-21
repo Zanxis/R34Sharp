@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R34Sharp", "R34Sharp\R34Sharp.csproj", "{A424568C-9215-4D93-A299-1BEDA719C914}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R34Sharp.Experimental", "R34Sharp.Experimental\R34Sharp.Experimental.csproj", "{29C357F0-FDBD-4210-BA6C-35F334544607}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R34Sharp.Experimental", "R34Sharp.Experimental\R34Sharp.Experimental.csproj", "{29C357F0-FDBD-4210-BA6C-35F334544607}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R34SharpBot", "R34Sharp.DiscordBot\R34SharpBot.csproj", "{DCCAB320-DFC3-4C8B-BC05-90A6134E28FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{29C357F0-FDBD-4210-BA6C-35F334544607}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29C357F0-FDBD-4210-BA6C-35F334544607}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29C357F0-FDBD-4210-BA6C-35F334544607}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCCAB320-DFC3-4C8B-BC05-90A6134E28FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCCAB320-DFC3-4C8B-BC05-90A6134E28FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCCAB320-DFC3-4C8B-BC05-90A6134E28FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCCAB320-DFC3-4C8B-BC05-90A6134E28FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
