@@ -19,6 +19,11 @@ namespace R34Sharp
         /// </summary>
         [XmlAttribute(AttributeName = "type")] public string Type { get; set; }
 
+        /// <summary>
+        /// The count of comments present in this collection.
+        /// </summary>
+        [XmlIgnore] public ulong Count => Data == null ? 0 : (ulong)Data.Length;
+
         internal override async Task BuildAsync(R34ApiClient instance)
         {
             try

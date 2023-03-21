@@ -1,4 +1,6 @@
-﻿using System.Xml.Serialization;
+﻿using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace R34Sharp
 {
@@ -16,7 +18,7 @@ namespace R34Sharp
         /// <summary>
         /// The count of posts present in this collection.
         /// </summary>
-        [XmlIgnore] public int Count => Data.Length;
+        [XmlIgnore] public ulong Count => Data == null ? 0 : (ulong)Data.Length;
 
         /// <summary>
         /// The offset of current collection.
