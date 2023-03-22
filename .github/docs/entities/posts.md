@@ -186,10 +186,10 @@ R34Posts posts = await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 foreach (R34Post post in filteredPosts)
 {
 	using MemoryStream ms = await post.DownloadFileAsync();
-	using FileStream file = File.Create(Path.Combine(directoryImagesPath, $"{element.FileName}{element.FileExtension}"));
+	using FileStream file = File.Create(Path.Combine(directoryImagesPath, $"{post.FileName}{post.FileExtension}"));
 
 	await file.WriteAsync(ms.ToArray(), token);
-	Console.WriteLine($"[ Download Completed: {post.FileName}{element.FileExtension} ]");
+	Console.WriteLine($"[ Download Completed: {post.FileName}{post.FileExtension} ]");
 }
 ```
 
