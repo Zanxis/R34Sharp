@@ -23,7 +23,7 @@ R34ApiClient client = new R34ApiClient();
 
 <br/>
 
-After that, you will now have access to the asynchronous search method **GetPostsAsync** , responsible for obtaining posts based on a search builder called **R34PostsSearchBuilder** , responsible for delimiting the search rules for posts.
+After that, you will now have access to the asynchronous search method **GetPostsAsync**, responsible for obtaining posts based on a search builder called **R34PostsSearchBuilder**, responsible for delimiting the search rules for posts.
 
 <br/>
 
@@ -58,9 +58,9 @@ await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 Note that R34PostsSearchBuilder has several fields that can be filled in to delimit and get a better search result, feel free to explore and define them as you wish.
 
 ## `2.` POST INFORMATION
-In the previous topic, notice that a request was made using the asynchronous method **GetPostsAsync** , however, how can we get the result of the request? Simple!
+In the previous topic, notice that a request was made using the asynchronous method **GetPostsAsync**, however, how can we get the result of the request? Simple!
 
-The method responsible for the request returns an object of type **R34Posts** , which contains general information about the returned posts, the main one (the posts) being stored in **Data**.
+The method responsible for the request returns an object of type **R34Posts**, which contains general information about the returned posts, the main one (the posts) being stored in **Data**.
 
 In order to obtain information from each post, we can place the **Data** field in a ForEach loop, which will go through each element of the collection, as in the example below:
 
@@ -91,7 +91,7 @@ foreach(R34Post post in posts.Data)
 
 ## `3.` FILTERING POSTS
 
-Eventually, it may be useful to filter posts based on specific conditions, for example, you only want videos instead of images, and for that, you can use the system library **System.Linq** to filter all types of posts. contents.
+Eventually, it may be useful to filter posts based on specific conditions, for example, you only want videos instead of images, and for that, you can use the system library **System.Linq** to filter all types of posts.
 
 Observe the example below and see that, using the **Where** method, I filter all the contents of the request to only have videos.
 
