@@ -16,7 +16,7 @@
 		<Company>Starciad</Company>
 		<Copyright>Starciad © 2023</Copyright>
 		<RepositoryType>git</RepositoryType>
-		<PackageTags>api;wrapper; csharp; dotnet; dotnet-core; wrapper-api; nsfw; wrapper-library; rule34; rule34-downloader; nsfw-api; rule34api; rule34-api;</PackageTags>
+		<PackageTags>api; wrapper; csharp; wrapper-api; nsfw; nsfw-api; rule34api; dotnet; api-wrapper; rule34; dotnet-api; r34; rule34-api; rule34xxx; dotnet-nsfw; dotnet-core; rule34-downloader;</PackageTags>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageIcon>R34Sharp_Icon.png</PackageIcon>
