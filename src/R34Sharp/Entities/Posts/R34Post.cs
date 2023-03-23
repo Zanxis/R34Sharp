@@ -64,11 +64,6 @@ namespace R34Sharp
         [XmlAttribute(AttributeName = "file_url")] public string FileUrl { get; set; }
 
         /// <summary>
-        /// Post file simple url.
-        /// </summary>
-        [XmlAttribute(AttributeName = "sample_url")] public string SampleUrl { get; set; }
-
-        /// <summary>
         /// Post preview file url.
         /// </summary>
         [XmlAttribute(AttributeName = "preview_url")] public string PreviewUrl { get; set; }
@@ -220,7 +215,7 @@ namespace R34Sharp
         /// </summary>
         /// <param name="tags">The tags to be fetch.</param>
         /// <returns>True if all Tags are found.</returns>
-        public bool HasTags(R34TagModel[] tags)
+        public bool HasTags(IEnumerable<R34TagModel> tags)
         {
             foreach (R34TagModel tag in tags)
             {
