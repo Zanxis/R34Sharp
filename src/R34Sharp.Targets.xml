@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<!-- HEADER -->
+	<PropertyGroup>
+		<Nullable>disable</Nullable>
+		<NoWarn>CS1591</NoWarn>
+		<Optimize>False</Optimize>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<!-- PACKAGE INFOS -->
+	<PropertyGroup>
+		<Title>R34Sharp</Title>
+		<Product>R34Sharp</Product>
+		<PackageId>R34Sharp</PackageId>
+		<PackageIcon>R34Sharp_Icon.png</PackageIcon>
+		<Company>Starciad</Company>
+		<Authors>Starciad</Authors>
+		<Copyright>Starciad © 2023</Copyright>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>api; wrapper; csharp; wrapper-api; nsfw; nsfw-api; rule34api; dotnet; api-wrapper; rule34; dotnet-api; r34; rule34-api; rule34xxx; dotnet-nsfw; dotnet-core; rule34-downloader;</PackageTags>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<PackageProjectUrl>https://github.com/Starciad/R34Sharp</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Starciad/R34Sharp</RepositoryUrl>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\.github\assets\icon\R34Sharp_Icon.png" Pack="true" PackagePath="/" />
+		<None Include="..\..\LICENSE.txt" Pack="true" PackagePath="/" />
+	</ItemGroup>
+</Project>
