@@ -38,6 +38,11 @@ namespace R34Sharp
         public required IEnumerable<R34TagModel> Tags { get; set; }
 
         /// <summary>
+        /// The tags that will be ignored when searching for Posts.
+        /// </summary>
+        public Optional<IEnumerable<R34TagModel>> BlockedTags { get; set; }
+
+        /// <summary>
         /// Build a custom search for Rule34 Posts.
         /// </summary>
         public R34PostsSearchBuilder()
@@ -45,18 +50,28 @@ namespace R34Sharp
             Limit = 100;
             Tags = Array.Empty<R34TagModel>();
 
+            BlockedTags = new();
             Id = new();
             Offset = new();
         }
 
         internal string GetTagsString()
         {
-            int length = Tags.Count();
+            return ConvertTagsToString(Tags);
+        }
+        internal string GetBlockedTagsString()
+        {
+            return ConvertTagsToString(BlockedTags.Value);
+        }
+
+        private static string ConvertTagsToString(IEnumerable<R34TagModel> tags)
+        {
+            int length = tags.Count();
 
             StringBuilder tagsString = new();
             for (int i = 0; i < length; i++)
             {
-                R34TagModel tag = Tags.ElementAtOrDefault(i);
+                R34TagModel tag = tags.ElementAtOrDefault(i);
                 if (tag == null) continue;
 
                 _ = tagsString.Append(tag.Name);
