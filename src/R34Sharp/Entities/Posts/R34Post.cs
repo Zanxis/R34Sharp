@@ -99,16 +99,6 @@ namespace R34Sharp
         [XmlAttribute(AttributeName = "preview_height")] public int PreviewHeight { get; set; }
 
         /// <summary>
-        /// Post flat file width.
-        /// </summary>
-        [XmlAttribute(AttributeName = "sample_width")] public int SampleWidth { get; set; }
-
-        /// <summary>
-        /// Post flat file height.
-        /// </summary>
-        [XmlAttribute(AttributeName = "sample_height")] public int SampleHeight { get; set; }
-
-        /// <summary>
         /// Number of changes the post has had.
         /// </summary>
         [XmlAttribute(AttributeName = "change")] public int ChangesCount { get; set; }
