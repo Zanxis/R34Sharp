@@ -11,16 +11,12 @@
 	<PropertyGroup>
 		<Description>An unofficial .NET Core wrapper for the Rule34 API.</Description>
 		<PackageReleaseNotes>
-			Added and minor code fixes.
-
-			● It is now possible to remove posts that have specific tags in searches;
-			● Removed the ability to see sample file dimensions of the post;
-			● Small changes in nomenclatures among other feats.
+			[ ... ]
 		</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>1.2.0</Version>
+		<Version>1.2.1</Version>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 	</PropertyGroup>
