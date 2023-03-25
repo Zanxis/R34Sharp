@@ -252,7 +252,7 @@ namespace R34Sharp
             MemoryStream ms = new();
 
             // Get Stream
-            using Stream fileStream = await R34Client.ApiClient.GetStreamAsync(url);
+            using Stream fileStream = await R34Client.Client.GetStreamAsync(url);
             await fileStream.CopyToAsync(ms);
 
             // Return Stream 
