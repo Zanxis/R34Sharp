@@ -1,4 +1,5 @@
 ﻿using System.Xml.Serialization;
+using System.Net;
 
 namespace R34Sharp
 {
@@ -10,7 +11,7 @@ namespace R34Sharp
     /// </remarks>
     public class R34ApiClient : IDisposable
     {
-        internal HttpClient ApiClient { get; private set; }
+        internal HttpClient Client { get; private set; }
 
         /// <summary>
         /// Checks if this class has already been Disposable.
@@ -37,10 +38,7 @@ namespace R34Sharp
         /// </summary>
         public R34ApiClient()
         {
-            ApiClient = new()
-            {
-                BaseAddress = new(R34Endpoints.BASE_URI),
-            };
+            StartClient();
 
             Posts = new();
             Tags = new();
@@ -50,13 +48,28 @@ namespace R34Sharp
             Tags.Build(this);
             Comments.Build(this);
         }
+        private void StartClient()
+        {
+            HttpClientHandler handler = new()
+            {
+                UseCookies = false,
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
+            };
+
+            Client = new(handler)
+            {
+                BaseAddress = new(R34Endpoints.BASE_URI),
+            };
+
+            Client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 R34Sharp");
+        }
 
         /// <summary>
         /// Dispose and initiate API client shutdown processes. In addition to relieving memory processes.
         /// </summary>
         public void Dispose()
         {
-            ApiClient.Dispose();
+            Client.Dispose();
 
             Disposable = true;
             GC.SuppressFinalize(this);

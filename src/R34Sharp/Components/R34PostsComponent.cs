@@ -67,7 +67,6 @@ namespace R34Sharp
             {
                 searchBuilder.Offset = new(searchBuilder.Offset.Value + currentChunk);
                 R34Posts posts = await GetPostsAsync(searchBuilder);
-                await Task.Delay(ApiClient.ApiClient.Timeout);
 
                 if (posts == null || posts.Data == null || posts.Count == 0) break;
 

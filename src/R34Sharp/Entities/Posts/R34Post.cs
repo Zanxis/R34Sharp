@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.ComponentModel;
 using System.Numerics;
 using System.Xml;
 using System.Xml.Linq;
@@ -44,6 +45,11 @@ namespace R34Sharp
         [XmlIgnore] public Vector2 PreviewFileDimensions { get; private set; }
 
         /// <summary>
+        /// Represents a level of explicit content of the post.
+        /// </summary>
+        [XmlIgnore] public Rating Rating { get; private set; }
+
+        /// <summary>
         /// The post ID.
         /// </summary>
         [XmlAttribute(AttributeName = "id")] public ulong Id { get; set; }
@@ -74,9 +80,9 @@ namespace R34Sharp
         [XmlAttribute(AttributeName = "score")] public int Score { get; set; }
 
         /// <summary>
-        /// Indicative classification of the post.
+        /// Represents an explicit content level of the post with a string.
         /// </summary>
-        [XmlAttribute(AttributeName = "rating")] public string Rating { get; set; }
+        [XmlAttribute(AttributeName = "rating")] public string RatingString { get; set; }
 
         /// <summary>
         /// Post file height.
@@ -160,10 +166,22 @@ namespace R34Sharp
         }
         private async Task SetInfosAsync()
         {
+            // CREATE TIMESTAMP
             CreatedAt = DateTimeHelpers.R34Parse(CreatedAtString, "ddd MMM dd HH:mm:ss zzz yyyy");
 
+            // DIMENSIONS
             FileDimensions = new(Width, Height);
             PreviewFileDimensions = new(PreviewWidth, PreviewHeight);
+
+            // RATING
+            switch (RatingString)
+            {
+                case "g": Rating = Rating.General; break;
+                case "s": Rating = Rating.Safe; break;
+                case "q": Rating = Rating.Questionable; break;
+                case "e": Rating = Rating.Explicit; break;
+                default: Rating = Rating.General; break;
+            }
 
             await Task.CompletedTask;
         }
@@ -252,7 +270,7 @@ namespace R34Sharp
             MemoryStream ms = new();
 
             // Get Stream
-            using Stream fileStream = await R34Client.ApiClient.GetStreamAsync(url);
+            using Stream fileStream = await R34Client.Client.GetStreamAsync(url);
             await fileStream.CopyToAsync(ms);
 
             // Return Stream 

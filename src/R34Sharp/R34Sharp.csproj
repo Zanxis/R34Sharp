@@ -11,16 +11,17 @@
 	<PropertyGroup>
 		<Description>An unofficial .NET Core wrapper for the Rule34 API.</Description>
 		<PackageReleaseNotes>
-			Added and minor code fixes.
+			Additions, improvements and minor bug fixes.
 
-			● It is now possible to remove posts that have specific tags in searches;
-			● Removed the ability to see sample file dimensions of the post;
-			● Small changes in nomenclatures among other feats.
+			● The API client is now more optimized, making requests with only necessary information;
+			● A significant improvement in the overall performance of the API, being able to respond in milliseconds or a few seconds;
+			● Added a special enum responsible for handling post ratings;
+			● Correction of the method that makes post requests through filtering, where it was indefinitely making an endless request.
 		</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>1.2.0</Version>
+		<Version>1.3.0</Version>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 	</PropertyGroup>
