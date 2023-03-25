@@ -6,12 +6,12 @@
     public class R34TagsSearchBuilder
     {
         /// <summary>
-        /// 
+        /// The type of search that will be performed on this browser.
         /// </summary>
         public required R34TagSearchType SearchType { get; set; }
 
         /// <summary>
-        /// 
+        /// The fetch value of the respective tag.
         /// </summary>
         public required string Search { get; set; }
 
