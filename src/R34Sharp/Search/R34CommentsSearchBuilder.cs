@@ -15,7 +15,18 @@
         /// </summary>
         public R34CommentsSearchBuilder()
         {
-            PostId = 0;
+            WithId(0);
+        }
+
+        /// <summary>
+        /// Set the Comment Id.
+        /// </summary>
+        /// <param name="value">The comment Id value.</param>
+        /// <returns>This search builder.</returns>
+        public R34CommentsSearchBuilder WithId(ulong value)
+        {
+            PostId = value;
+            return this;
         }
     }
 }

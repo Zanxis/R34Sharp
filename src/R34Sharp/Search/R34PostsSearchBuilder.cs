@@ -47,8 +47,8 @@ namespace R34Sharp
         /// </summary>
         public R34PostsSearchBuilder()
         {
-            Limit = 100;
-            Tags = Array.Empty<R34TagModel>();
+            WithLimit(100);
+            WithTags(Array.Empty<R34TagModel>());
 
             BlockedTags = new();
             Id = new();
@@ -62,6 +62,61 @@ namespace R34Sharp
         internal string GetBlockedTagsString()
         {
             return ConvertTagsToString(BlockedTags.Value);
+        }
+
+        /// <summary>
+        /// Set the post search limit.
+        /// </summary>
+        /// <param name="value">The limit value.</param>
+        /// <returns>This search builder.</returns>
+        public R34PostsSearchBuilder WithLimit(int value)
+        {
+            Limit = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Set required Post Id.
+        /// </summary>
+        /// <param name="value">The id value.</param>
+        /// <returns>This search builder.</returns>
+        public R34PostsSearchBuilder WithId(ulong value)
+        {
+            Id = new(value);
+            return this;
+        }
+
+        /// <summary>
+        /// Set the Search Offset value.
+        /// </summary>
+        /// <param name="value">The offset value.</param>
+        /// <returns>This search builder.</returns>
+        public R34PostsSearchBuilder WithOffset(int value)
+        {
+            Offset = new(value);
+            return this;
+        }
+
+        /// <summary>
+        /// Define the tags that will be used in the search.
+        /// </summary>
+        /// <param name="tags">The tags collection.</param>
+        /// <returns>This search builder.</returns>
+        public R34PostsSearchBuilder WithTags(IEnumerable<R34TagModel> tags)
+        {
+            Tags = tags;
+            return this;
+        }
+
+        /// <summary>
+        /// Define the blocked tags that will be ignored in the search.
+        /// </summary>
+        /// <param name="tags">The tags collection.</param>
+        /// <returns>This search builder.</returns>
+        public R34PostsSearchBuilder WithBlockedTags(IEnumerable<R34TagModel> tags)
+        {
+            BlockedTags = new(tags);
+            return this;
         }
 
         private static string ConvertTagsToString(IEnumerable<R34TagModel> tags)
