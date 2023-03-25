@@ -1,4 +1,5 @@
 ﻿using System.Xml.Serialization;
+using System.Net;
 
 namespace R34Sharp
 {
@@ -37,10 +38,7 @@ namespace R34Sharp
         /// </summary>
         public R34ApiClient()
         {
-            ApiClient = new()
-            {
-                BaseAddress = new(R34Endpoints.BASE_URI),
-            };
+            StartClient();
 
             Posts = new();
             Tags = new();
@@ -49,6 +47,21 @@ namespace R34Sharp
             Posts.Build(this);
             Tags.Build(this);
             Comments.Build(this);
+        }
+        private void StartClient()
+        {
+            HttpClientHandler handler = new()
+            {
+                UseCookies = false,
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
+            };
+
+            ApiClient = new(handler)
+            {
+                BaseAddress = new(R34Endpoints.BASE_URI),
+            };
+
+            ApiClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 R34Sharp");
         }
 
         /// <summary>

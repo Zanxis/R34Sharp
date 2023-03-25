@@ -2,7 +2,7 @@
 	<Import Project="../R34Sharp.Targets.xml" />
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
+		<TargetFramework>net7.0</TargetFramework>
 		<OutputType>library</OutputType>
 		<ImplicitUsings>true</ImplicitUsings>
 		<Nullable>disable</Nullable>
