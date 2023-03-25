@@ -11,7 +11,7 @@ namespace R34Sharp
     /// </remarks>
     public class R34ApiClient : IDisposable
     {
-        internal HttpClient ApiClient { get; private set; }
+        internal HttpClient Client { get; private set; }
 
         /// <summary>
         /// Checks if this class has already been Disposable.
@@ -56,12 +56,12 @@ namespace R34Sharp
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
             };
 
-            ApiClient = new(handler)
+            Client = new(handler)
             {
                 BaseAddress = new(R34Endpoints.BASE_URI),
             };
 
-            ApiClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 R34Sharp");
+            Client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 R34Sharp");
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace R34Sharp
         /// </summary>
         public void Dispose()
         {
-            ApiClient.Dispose();
+            Client.Dispose();
 
             Disposable = true;
             GC.SuppressFinalize(this);

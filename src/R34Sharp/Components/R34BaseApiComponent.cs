@@ -31,7 +31,7 @@ namespace R34Sharp
             try
             {
                 HttpRequestMessage message = new(HttpMethod.Get, url);
-                HttpResponseMessage msg = await ApiClient.ApiClient.SendAsync(message);
+                HttpResponseMessage msg = await ApiClient.Client.SendAsync(message);
 
                 msg.EnsureSuccessStatusCode();
 
