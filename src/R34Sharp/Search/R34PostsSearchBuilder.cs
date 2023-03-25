@@ -47,8 +47,8 @@ namespace R34Sharp
         /// </summary>
         public R34PostsSearchBuilder()
         {
-            Limit = 100;
-            Tags = Array.Empty<R34TagModel>();
+            WithLimit(100);
+            WithTags(Array.Empty<R34TagModel>());
 
             BlockedTags = new();
             Id = new();
@@ -62,6 +62,27 @@ namespace R34Sharp
         internal string GetBlockedTagsString()
         {
             return ConvertTagsToString(BlockedTags.Value);
+        }
+
+        public void WithLimit(int value)
+        {
+            Limit = value;
+        }
+        public void WithId(ulong value)
+        {
+            Id = new(value);
+        }
+        public void WithOffset(int value)
+        {
+            Offset = new(value);
+        }
+        public void WithTags(IEnumerable<R34TagModel> tags)
+        {
+            Tags = tags;
+        }
+        public void WithBlockedTags(IEnumerable<R34TagModel> tags)
+        {
+            BlockedTags = new(tags);
         }
 
         private static string ConvertTagsToString(IEnumerable<R34TagModel> tags)

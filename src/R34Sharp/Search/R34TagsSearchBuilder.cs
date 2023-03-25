@@ -28,9 +28,22 @@
         /// </summary>
         public R34TagsSearchBuilder()
         {
-            SearchType = R34TagSearchType.Name;
-            Search = string.Empty;
-            Limit = 100;
+            WithSearchType(R34TagSearchType.Name);
+            WithSearch(string.Empty);
+            WithLimit(100);
+        }
+
+        public void WithSearchType(R34TagSearchType value)
+        {
+            SearchType = value;
+        }
+        public void WithSearch(string value)
+        {
+            Search = value;
+        }
+        public void WithLimit(int value)
+        {
+            Limit = value;
         }
     }
 }

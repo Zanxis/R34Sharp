@@ -15,7 +15,12 @@
         /// </summary>
         public R34CommentsSearchBuilder()
         {
-            PostId = 0;
+            WithId(0);
+        }
+
+        public void WithId(ulong value)
+        {
+            PostId = value;
         }
     }
 }
