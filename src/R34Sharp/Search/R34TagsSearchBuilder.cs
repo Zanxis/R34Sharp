@@ -33,17 +33,37 @@
             WithLimit(100);
         }
 
-        public void WithSearchType(R34TagSearchType value)
+        /// <summary>
+        /// Set the search type.
+        /// </summary>
+        /// <param name="value">The search type.</param>
+        /// <returns>This search builder.</returns>
+        public R34TagsSearchBuilder WithSearchType(R34TagSearchType value)
         {
             SearchType = value;
+            return this;
         }
-        public void WithSearch(string value)
+
+        /// <summary>
+        /// Set the search value.
+        /// </summary>
+        /// <param name="value">The search value.</param>
+        /// <returns>This search builder.</returns>
+        public R34TagsSearchBuilder WithSearch(string value)
         {
             Search = value;
+            return this;
         }
-        public void WithLimit(int value)
+
+        /// <summary>
+        /// Set the serach limite.
+        /// </summary>
+        /// <param name="value">The serach limite.</param>
+        /// <returns>This search builder.</returns>
+        public R34TagsSearchBuilder WithLimit(int value)
         {
             Limit = value;
+            return this;
         }
     }
 }
