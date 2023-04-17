@@ -241,8 +241,8 @@ namespace R34Sharp
         /// <exception cref="InvalidOperationException" />
         public async Task<R34Comments> GetCommentsAsync()
         {
-            if (HasComments)
-                await Task.FromException(new InvalidOperationException("The post has no comments."));
+            if (!HasComments)
+                return null;
 
             return await Task.FromResult(await R34Client.Comments.GetCommentsAsync(new() { PostId = Id }));
         }
