@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns='http://schemas.microsoft.com/developer/msbuild/2003'>
+    <!-- PUBLISH -->
+    <PropertyGroup>
+        <PublishTrimmed>true</PublishTrimmed>
+        <TieredCompilation>true</TieredCompilation>
+        <PublishReadyToRun>true</PublishReadyToRun>
+    </PropertyGroup>
+
+    <!-- PATHS -->
+    <!-- Debug -->
+    <PropertyGroup Condition=' &apos;$(Configuration)|$(Platform)&apos; == &apos;Debug|AnyCPU&apos; '>
+        <OutputPath>../../src/Output/$(MSBuildProjectName)/$(Plataform)/Debug/</OutputPath>
+    </PropertyGroup>
+    <!-- Publish -->
+    <PropertyGroup Condition=' &apos;$(Configuration)|$(Platform)&apos; == &apos;Release|AnyCPU&apos; '>
+        <OutputPath>../../src/Output/$(MSBuildProjectName)/$(Plataform)/Release/</OutputPath>
+    </PropertyGroup>
+    
+    <!-- COMPILATION -->
+    <PropertyGroup>
+        <NoWarn></NoWarn>
+        <Optimize>true</Optimize>
+    </PropertyGroup>
+    <PropertyGroup Condition='&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|AnyCPU&apos;'>
+        <DebugType>embedded</DebugType>
+        <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    </PropertyGroup>
+    <PropertyGroup Condition='&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|AnyCPU&apos;'>
+        <DebugType>embedded</DebugType>
+        <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    </PropertyGroup>
+</Project>

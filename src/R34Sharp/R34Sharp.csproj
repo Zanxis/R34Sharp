@@ -1,25 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-	<Import Project="../R34Sharp.Targets.xml" />
+﻿<Project Sdk='Microsoft.NET.Sdk'>
+    <Import Project='../Targets/Project_Compilation.xml'></Import>
+	<Import Project='../Targets/Project_Infos.xml'></Import>
+	<Import Project='../Targets/Project_Settings.xml'></Import>
 
-	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
-		<OutputType>library</OutputType>
-		<ImplicitUsings>true</ImplicitUsings>
-		<Nullable>disable</Nullable>
-	</PropertyGroup>
-
-	<PropertyGroup>
-		<Description>An unofficial .NET Core wrapper for the Rule34 API.</Description>
-		<PackageReleaseNotes>
-			Additions, improvements and minor bug fixes.
-
-			●
-		</PackageReleaseNotes>
-	</PropertyGroup>
-
-	<PropertyGroup>
-		<Version>1.3.1</Version>
-		<VersionPrefix></VersionPrefix>
-		<VersionSuffix></VersionSuffix>
-	</PropertyGroup>
+    <PropertyGroup>
+        <Description>An unofficial .NET Core wrapper for the Rule34 API.</Description>
+        <PackageReleaseNotes></PackageReleaseNotes>
+    </PropertyGroup>
 </Project>

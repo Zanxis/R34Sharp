@@ -48,6 +48,7 @@ namespace R34Sharp
             Tags.Build(this);
             Comments.Build(this);
         }
+
         private void StartClient()
         {
             HttpClientHandler handler = new()
@@ -70,8 +71,9 @@ namespace R34Sharp
         public void Dispose()
         {
             Client.Dispose();
-
             Disposable = true;
+
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
     }
