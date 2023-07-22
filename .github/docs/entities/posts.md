@@ -132,7 +132,7 @@ With this example, you can observe the amount of possibilities that are provided
 ## `4.` SEARCHING FOR POST OFFSET
 As you develop and create new things, it might be interesting to go beyond 1000 posts, let's assume you want to request 2000 posts this time, how could you do that if the allowed limit is 1000? Simple, using **Search Offsets**.
 
-Offsets is a simple way to fetch a bunch of posts beyond the established limit without incurring API overhead and in a simpler way to happen. You can define a chunk when instantiating the search, as in the example below:
+Offsets is a simple way to fetch a bunch of posts beyond the established limit without incurring API overhead and in a simpler way to happen. You can define a offset when instantiating the search, as in the example below:
 
 <br/>
 
@@ -198,3 +198,8 @@ foreach (R34Post post in filteredPosts)
 It's important to note that downloading large files from the Rule34 API can take a significant amount of time and may also consume a lot of bandwidth. Therefore, it's recommended to have a stable and fast internet connection before attempting to download any large files.
 
 Additionally, it's advisable to implement some sort of progress monitoring feature to let the user know the current status of the download process, and also to implement error handling mechanisms in case the download fails or gets interrupted.
+
+## `6.` BEST PRACTICES
+### `1.` Save all information in a cache.
+
+It is essential to emphasize that all methods that receive information and return collections make requests to the Rule34 API. In this context, it is highly recommended to store the obtained values in any form of cache of your preference. By doing so, we avoid redundant requests and the waste of memory resources with lists containing a large number of elements that are automatically created by the system.
