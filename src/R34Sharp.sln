@@ -5,10 +5,6 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R34Sharp", "R34Sharp\R34Sharp.csproj", "{A424568C-9215-4D93-A299-1BEDA719C914}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R34Sharp.Experimental", "R34Sharp.Experimental\R34Sharp.Experimental.csproj", "{CE342421-F778-4709-A0A0-3B42661063ED}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R34Sharp.Experimental.Discord", "R34Sharp.Experimental.Discord\R34Sharp.Experimental.Discord.csproj", "{C8A7203F-F49D-4DC4-B255-D3C8F50A8D54}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R34Sharp.Tests", "R34Sharp.Tests\R34Sharp.Tests.csproj", "{1FF37CFD-8630-4578-8497-660FC4B00D44}"
 EndProject
 Global
@@ -21,14 +17,6 @@ Global
 		{A424568C-9215-4D93-A299-1BEDA719C914}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A424568C-9215-4D93-A299-1BEDA719C914}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A424568C-9215-4D93-A299-1BEDA719C914}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CE342421-F778-4709-A0A0-3B42661063ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE342421-F778-4709-A0A0-3B42661063ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE342421-F778-4709-A0A0-3B42661063ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE342421-F778-4709-A0A0-3B42661063ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8A7203F-F49D-4DC4-B255-D3C8F50A8D54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8A7203F-F49D-4DC4-B255-D3C8F50A8D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8A7203F-F49D-4DC4-B255-D3C8F50A8D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8A7203F-F49D-4DC4-B255-D3C8F50A8D54}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1FF37CFD-8630-4578-8497-660FC4B00D44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1FF37CFD-8630-4578-8497-660FC4B00D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FF37CFD-8630-4578-8497-660FC4B00D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
