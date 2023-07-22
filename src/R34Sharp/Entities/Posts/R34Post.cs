@@ -27,7 +27,7 @@ namespace R34Sharp
         /// <summary>
         /// The Post file type.
         /// </summary>
-        [XmlIgnore] public FileType FileType { get; private set; }
+        [XmlIgnore] public R34FileType FileType { get; private set; }
 
         /// <summary>
         /// Date and time the post was published.
@@ -47,7 +47,7 @@ namespace R34Sharp
         /// <summary>
         /// Represents a level of explicit content of the post.
         /// </summary>
-        [XmlIgnore] public Rating Rating { get; private set; }
+        [XmlIgnore] public R34Rating Rating { get; private set; }
 
         /// <summary>
         /// The post ID.
@@ -176,11 +176,11 @@ namespace R34Sharp
             // RATING
             switch (RatingString)
             {
-                case "g": Rating = Rating.General; break;
-                case "s": Rating = Rating.Safe; break;
-                case "q": Rating = Rating.Questionable; break;
-                case "e": Rating = Rating.Explicit; break;
-                default: Rating = Rating.General; break;
+                case "g": Rating = R34Rating.General; break;
+                case "s": Rating = R34Rating.Safe; break;
+                case "q": Rating = R34Rating.Questionable; break;
+                case "e": Rating = R34Rating.Explicit; break;
+                default: Rating = R34Rating.General; break;
             }
 
             await Task.CompletedTask;
