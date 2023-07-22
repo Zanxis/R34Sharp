@@ -2,9 +2,7 @@
 <Project xmlns='http://schemas.microsoft.com/developer/msbuild/2003'>
     <!-- PUBLISH -->
     <PropertyGroup>
-        <PublishTrimmed>true</PublishTrimmed>
         <TieredCompilation>true</TieredCompilation>
-        <PublishReadyToRun>true</PublishReadyToRun>
     </PropertyGroup>
 
     <!-- PATHS -->
@@ -20,7 +18,6 @@
     <!-- COMPILATION -->
     <PropertyGroup>
         <NoWarn>IL2026</NoWarn>
-        <Optimize>true</Optimize>
     </PropertyGroup>
 
     <PropertyGroup Condition='&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|AnyCPU&apos;'>

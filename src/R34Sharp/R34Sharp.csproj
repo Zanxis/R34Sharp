@@ -4,7 +4,7 @@
 	<Import Project='../Targets/Project_Settings.targets'></Import>
 
     <PropertyGroup>
-        <OutputType>library</OutputType>
+        <OutputType>Library</OutputType>
     </PropertyGroup>
 
     <PropertyGroup>
