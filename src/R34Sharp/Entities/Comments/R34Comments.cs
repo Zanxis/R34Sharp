@@ -7,7 +7,7 @@ namespace R34Sharp
     /// Represents a collection of Rule34 Comments.
     /// </summary>
     [XmlRoot(ElementName = "comments")]
-    public class R34Comments : R34Data
+    public sealed class R34Comments : R34Data
     {
         /// <summary>
         /// The collection of Rule34 comments.

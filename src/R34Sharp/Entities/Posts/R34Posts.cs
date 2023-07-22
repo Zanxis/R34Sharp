@@ -8,7 +8,7 @@ namespace R34Sharp
     /// Represents a collection of Rule34 posts.
     /// </summary>
     [XmlRoot(ElementName = "posts")]
-    public class R34Posts : R34Data
+    public sealed class R34Posts : R34Data
     {
         /// <summary>
         /// The collection of Rule34 posts.

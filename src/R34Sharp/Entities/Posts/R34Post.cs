@@ -12,7 +12,7 @@ namespace R34Sharp
     /// A Rule34 post.
     /// </summary>
     [XmlRoot(ElementName = "post")]
-    public class R34Post : R34Entity
+    public sealed class R34Post : R34Entity
     {
         /// <summary>
         /// The filename of the Post.

@@ -3,7 +3,7 @@
     /// <summary>
     /// Media type of a file.
     /// </summary>
-    public enum FileType
+    public enum R34FileType
     {
         /// <summary>
         /// File with unknown extension or not registered in the API
@@ -30,7 +30,7 @@
     /// <summary>
     /// Represents a level of explicit content of the post.
     /// </summary>
-    public enum Rating
+    public enum R34Rating
     {
         /// <summary>
         /// Indicates that post contains G-rated, completely safe for work content.

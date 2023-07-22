@@ -3,7 +3,7 @@
     /// <summary>
     /// The Rule34 model Tag Builder.
     /// </summary>
-    public class R34TagModel
+    public sealed class R34TagModel
     {
         /// <summary>
         /// Current tag name formatted for the Rule34 tag template.

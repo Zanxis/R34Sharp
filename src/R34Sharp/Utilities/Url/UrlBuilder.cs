@@ -2,22 +2,22 @@
 
 namespace R34Sharp
 {
-    internal class UrlBuilder
+    internal sealed class UrlBuilder
     {
-        public string BaseAddress { get; private set; }
-
+        internal string BaseAddress { get; private set; }
         private readonly Dictionary<string, string> parameters = new();
 
-        public UrlBuilder(string address)
+        internal UrlBuilder(string address)
         {
             BaseAddress = address;
         }
-        public void AddParameter(string name, string value)
+
+        internal void AddParameter(string name, string value)
         {
             parameters.TryAdd(name, value);
         }
 
-        public string Build()
+        internal string Build()
         {
             StringBuilder addressBuilder = new();
             addressBuilder.Append($"{BaseAddress}?");

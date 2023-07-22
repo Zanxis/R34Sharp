@@ -9,7 +9,7 @@ namespace R34Sharp
     /// <remarks>
     /// Responsible for all requests made to Rule34.
     /// </remarks>
-    public class R34ApiClient : IDisposable
+    public sealed class R34ApiClient : IDisposable
     {
         internal HttpClient Client { get; private set; }
 

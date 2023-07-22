@@ -7,7 +7,7 @@ namespace R34Sharp
     /// A Rule34 post comment.
     /// </summary>
     [XmlRoot(ElementName = "comment")]
-    public class R34Comment : R34Entity
+    public sealed class R34Comment : R34Entity
     {
         #region HEADER
         /// <summary>

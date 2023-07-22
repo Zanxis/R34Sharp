@@ -7,7 +7,7 @@ namespace R34Sharp
     /// Represents a collection of Rule34 tags.
     /// </summary>
     [XmlRoot(ElementName = "tags")]
-    public class R34Tags : R34Data
+    public sealed class R34Tags : R34Data
     {
         /// <summary>
         /// The collection of Rule34 tags.

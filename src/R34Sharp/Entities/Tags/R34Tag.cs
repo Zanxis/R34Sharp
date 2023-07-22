@@ -6,7 +6,7 @@ namespace R34Sharp
     /// A Rule34 tag.
     /// </summary>
     [XmlRoot(ElementName = "tag")]
-    public class R34Tag : R34Entity
+    public sealed class R34Tag : R34Entity
     {
         #region BODY
         /// <summary>
