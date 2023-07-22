@@ -19,13 +19,15 @@
     
     <!-- COMPILATION -->
     <PropertyGroup>
-        <NoWarn></NoWarn>
+        <NoWarn>IL2026</NoWarn>
         <Optimize>true</Optimize>
     </PropertyGroup>
+
     <PropertyGroup Condition='&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|AnyCPU&apos;'>
         <DebugType>embedded</DebugType>
         <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
     </PropertyGroup>
+
     <PropertyGroup Condition='&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|AnyCPU&apos;'>
         <DebugType>embedded</DebugType>
         <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>

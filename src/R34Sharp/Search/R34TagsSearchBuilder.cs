@@ -8,12 +8,12 @@
         /// <summary>
         /// The type of search that will be performed on this browser.
         /// </summary>
-        public required R34TagSearchType SearchType { get; set; }
+        public R34TagSearchType SearchType { get; set; }
 
         /// <summary>
         /// The fetch value of the respective tag.
         /// </summary>
-        public required string Search { get; set; }
+        public string Search { get; set; }
 
         /// <summary>
         /// The limit of tags that will be returned.

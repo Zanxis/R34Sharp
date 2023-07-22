@@ -16,7 +16,7 @@ namespace R34Sharp
         /// <summary>
         /// Checks if this class has already been Disposable.
         /// </summary>
-        public bool Disposable { get; private set; }
+        public bool Disposed { get; private set; }
 
         /// <summary>
         /// API component responsible for posts.
@@ -71,9 +71,8 @@ namespace R34Sharp
         public void Dispose()
         {
             Client.Dispose();
-            Disposable = true;
+            Disposed = true;
 
-            Dispose(true);
             GC.SuppressFinalize(this);
         }
     }

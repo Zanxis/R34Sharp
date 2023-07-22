@@ -2,14 +2,13 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<!-- PLATAFORM -->
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
-		<OutputType>library</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
 	</PropertyGroup>
 
 	<!-- GENERAL -->
 	<PropertyGroup>
 		<Nullable>disable</Nullable>
-		<ImplicitUsings>disable</ImplicitUsings>
+		<ImplicitUsings>True</ImplicitUsings>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 		<PlatformTarget>x64</PlatformTarget>
 	</PropertyGroup>

@@ -1,7 +1,11 @@
 ﻿<Project Sdk='Microsoft.NET.Sdk'>
-    <Import Project='../Targets/Project_Compilation.xml'></Import>
-	<Import Project='../Targets/Project_Infos.xml'></Import>
-	<Import Project='../Targets/Project_Settings.xml'></Import>
+    <Import Project='../Targets/Project_Compilation.targets'></Import>
+	<Import Project='../Targets/Project_Infos.targets'></Import>
+	<Import Project='../Targets/Project_Settings.targets'></Import>
+
+    <PropertyGroup>
+        <OutputType>library</OutputType>
+    </PropertyGroup>
 
     <PropertyGroup>
         <Description>An unofficial .NET Core wrapper for the Rule34 API.</Description>

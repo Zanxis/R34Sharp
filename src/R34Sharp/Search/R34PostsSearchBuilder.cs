@@ -13,7 +13,7 @@ namespace R34Sharp
         /// <remarks>
         /// The value must be between 1 and 1000 posts.
         /// </remarks>
-        public required int Limit { get; set; }
+        public int Limit { get; set; }
 
         /// <summary>
         /// The Id of a specific Rule34 post.
@@ -35,7 +35,7 @@ namespace R34Sharp
         /// <summary>
         /// The tags that will be used for the search.
         /// </summary>
-        public required IEnumerable<R34TagModel> Tags { get; set; }
+        public IEnumerable<R34TagModel> Tags { get; set; }
 
         /// <summary>
         /// The tags that will be ignored when searching for Posts.

@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R34Sharp", "R34Sharp\R34Sha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R34Sharp.Tests", "R34Sharp.Tests\R34Sharp.Tests.csproj", "{1FF37CFD-8630-4578-8497-660FC4B00D44}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R34Sharp.Experimental", "R34Sharp.Experimental\R34Sharp.Experimental.csproj", "{1C3B0093-4FBF-4F95-A9B9-947D9C8A4420}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1FF37CFD-8630-4578-8497-660FC4B00D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FF37CFD-8630-4578-8497-660FC4B00D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FF37CFD-8630-4578-8497-660FC4B00D44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C3B0093-4FBF-4F95-A9B9-947D9C8A4420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C3B0093-4FBF-4F95-A9B9-947D9C8A4420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C3B0093-4FBF-4F95-A9B9-947D9C8A4420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C3B0093-4FBF-4F95-A9B9-947D9C8A4420}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
