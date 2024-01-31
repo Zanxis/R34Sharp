@@ -2,9 +2,7 @@
 using R34Sharp.Tools;
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace R34Sharp.Search
 {
@@ -19,7 +17,19 @@ namespace R34Sharp.Search
         /// <remarks>
         /// The value must be between 1 and 1000 posts.
         /// </remarks>
-        public int Limit { get; set; }
+        public int Limit
+        {
+            get => this._limit;
+            set
+            {
+                if (value < 1 || value > 1000)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "The limit must be between 1 and 1000.");
+                }
+
+                this._limit = value;
+            }
+        }
 
         /// <summary>
         /// The Id of a specific Rule34 post.
@@ -41,12 +51,28 @@ namespace R34Sharp.Search
         /// <summary>
         /// The tags that will be used for the search.
         /// </summary>
-        public R34TagModel[] Tags { get; set; }
+        public R34TagModel[] Tags
+        {
+            get => this._tags;
+            set
+            {
+                if (value == null || value.Length == 0)
+                {
+                    throw new ArgumentException("Search tags are missing or empty.", nameof(value));
+                }
+
+                this._tags = value;
+            }
+        }
 
         /// <summary>
         /// The tags that will be ignored when searching for Posts.
         /// </summary>
-        public Optional<R34TagModel[]> BlockedTags { get; set; }
+        public R34TagModel[] BlockedTags { get => this._blockedTags; set => this._blockedTags = value; }
+
+        private int _limit;
+        private R34TagModel[] _tags;
+        private R34TagModel[] _blockedTags;
 
         /// <summary>
         /// Build a custom search for Rule34 Posts.
@@ -54,20 +80,20 @@ namespace R34Sharp.Search
         public R34PostsSearchBuilder()
         {
             _ = WithLimit(100);
-            WithTags(Array.Empty<R34TagModel>());
+            _ = WithTags(Array.Empty<R34TagModel>());
+            _ = WithBlockedTags(Array.Empty<R34TagModel>());
 
-            this.BlockedTags = new();
             this.Id = new();
             this.Offset = new();
         }
 
         internal string GetTagsString()
         {
-            return ConvertTagsToString(this.Tags);
+            return ConvertTagsToString(this._tags);
         }
         internal string GetBlockedTagsString()
         {
-            return ConvertTagsToString(this.BlockedTags.Value);
+            return ConvertTagsToString(this._blockedTags);
         }
 
         /// <summary>
@@ -121,7 +147,7 @@ namespace R34Sharp.Search
         /// <returns>This search builder.</returns>
         public R34PostsSearchBuilder WithBlockedTags(R34TagModel[] tags)
         {
-            this.BlockedTags = new(tags);
+            this.BlockedTags = tags;
             return this;
         }
 

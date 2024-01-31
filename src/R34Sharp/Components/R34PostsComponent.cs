@@ -26,16 +26,6 @@ namespace R34Sharp.Components
         /// <exception cref="ArgumentException" />
         public async Task<R34Posts> GetPostsAsync(R34PostsSearchBuilder searchBuilder)
         {
-            if (searchBuilder.Limit < 1 || searchBuilder.Limit > 1000)
-            {
-                await Task.FromException(new ArgumentException("The limit allowed for obtaining Posts is a value between 1 and 1000.", nameof(searchBuilder)));
-            }
-
-            if (searchBuilder.Tags.Length == 0)
-            {
-                await Task.FromException(new ArgumentException("Search tags are missing.", nameof(searchBuilder)));
-            }
-
             UrlBuilder urlBuilder = new(R34Endpoints.INDEX);
             urlBuilder.AddParameter("page", "dapi");
             urlBuilder.AddParameter("s", "post");
@@ -53,10 +43,11 @@ namespace R34Sharp.Components
                 urlBuilder.AddParameter("id", searchBuilder.Id.Value.ToString());
             }
 
-            R34Posts postsResult = await GetAsync<R34Posts>(urlBuilder.Build(), _postsXmlSerializer);
-            if (searchBuilder.BlockedTags.HasValue)
+            R34Posts postsResult = await GetAsync<R34Posts>(urlBuilder.Build(), _postsXmlSerializer).ConfigureAwait(false);
+
+            if (searchBuilder.BlockedTags.Length > 0)
             {
-                postsResult.Data = postsResult.Data.Where(x => !x.HasTags(searchBuilder.BlockedTags.Value)).ToArray();
+                postsResult.Data = postsResult.Data.Where(x => !x.HasTags(searchBuilder.BlockedTags)).ToArray();
             }
 
             return postsResult;

@@ -25,13 +25,6 @@ namespace R34Sharp.Components
         /// <exception cref="ArgumentException" />
         public async Task<R34Tags> GetTagsAsync(R34TagsSearchBuilder searchBuilder)
         {
-            // Handler Exceptions
-            if (searchBuilder.Limit < 1 || searchBuilder.Limit > 100)
-            {
-                await Task.FromException(new ArgumentException("The limit allowed for obtaining Tags is a value between 1 and 100."));
-            }
-
-            // Build Url
             UrlBuilder urlBuilder = new(R34Endpoints.INDEX);
             urlBuilder.AddParameter("page", "dapi");
             urlBuilder.AddParameter("s", "tag");
@@ -54,7 +47,6 @@ namespace R34Sharp.Components
                     break;
             }
 
-            // Get Result
             return await GetAsync<R34Tags>(urlBuilder.Build(), _tagsXmlSerializer);
         }
     }

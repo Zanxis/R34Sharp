@@ -1,5 +1,7 @@
 ﻿using R34Sharp.Enums;
 
+using System;
+
 namespace R34Sharp.Search
 {
     /// <summary>
@@ -23,7 +25,21 @@ namespace R34Sharp.Search
         /// <remarks>
         /// The value must be between 1 and 100.
         /// </remarks>
-        public int Limit { get; set; }
+        public int Limit
+        {
+            get => this._limit;
+            set
+            {
+                if (value < 1 || value > 100)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "The limit must be between 1 and 100.");
+                }
+
+                this._limit = value;
+            }
+        }
+
+        private int _limit;
 
         /// <summary>
         /// Build a custom search for Rule34 Tags.
