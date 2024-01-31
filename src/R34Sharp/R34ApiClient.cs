@@ -13,7 +13,7 @@ namespace R34Sharp
     /// <remarks>
     /// Responsible for all requests made to Rule34.
     /// </remarks>
-    public sealed class R34Client : IDisposable
+    public sealed class R34ApiClient : IDisposable
     {
         internal HttpClient Client { get; private set; }
 
@@ -42,7 +42,7 @@ namespace R34Sharp
         /// <summary>
         /// Initializes the Rule34 Wrapper to enable communications between the website and the client.
         /// </summary>
-        public R34Client()
+        public R34ApiClient()
         {
             BuildClient();
 

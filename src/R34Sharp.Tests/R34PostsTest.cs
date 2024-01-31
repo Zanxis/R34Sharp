@@ -7,7 +7,7 @@ namespace R34Sharp.Tests
 {
     public class R34PostsTest
     {
-        private static readonly R34Client _client = new();
+        private static readonly R34ApiClient _client = new();
         private static readonly R34FormattedTag[] tagsPrefab = new R34FormattedTag[]
         {
             new("Little Mac"),

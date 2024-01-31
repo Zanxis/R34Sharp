@@ -27,7 +27,7 @@ namespace R34Sharp.Entities.Posts
         /// </summary>
         [XmlAttribute(AttributeName = "offset")] public int Offset { get; set; }
 
-        internal override async Task BuildAsync(R34Client instance)
+        internal override async Task BuildAsync(R34ApiClient instance)
         {
             if (this.Data == null)
             {

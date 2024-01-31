@@ -9,7 +9,7 @@ namespace R34Sharp.Experimental
     {
         private static string AssetsDirectory => Path.Combine(Directory.GetCurrentDirectory(), "R34Assets");
 
-        private static readonly R34Client _client = new();
+        private static readonly R34ApiClient _client = new();
 
         [MTAThread]
         private static async Task Main()
@@ -23,10 +23,10 @@ namespace R34Sharp.Experimental
             R34PostsSearchBuilder searchBuilder = new()
             {
                 Limit = 100,
-                //Tags = new R34FormattedTag[]
-                //{
-                //    new("Bara"),
-                //},
+                Tags = new R34FormattedTag[]
+                {
+                    new("Bara"),
+                },
             };
 
             Console.Clear();

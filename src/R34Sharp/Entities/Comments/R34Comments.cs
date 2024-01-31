@@ -27,7 +27,7 @@ namespace R34Sharp.Entities.Comments
         /// </summary>
         [XmlIgnore] public ulong Count => this.Data == null ? 0 : (ulong)this.Data.Length;
 
-        internal override async Task BuildAsync(R34Client instance)
+        internal override async Task BuildAsync(R34ApiClient instance)
         {
             if (this.Data == null)
             {

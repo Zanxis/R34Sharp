@@ -7,6 +7,6 @@ namespace R34Sharp.Entities
     /// </summary>
     public abstract class R34Data
     {
-        internal abstract Task BuildAsync(R34Client instance);
+        internal abstract Task BuildAsync(R34ApiClient instance);
     }
 }

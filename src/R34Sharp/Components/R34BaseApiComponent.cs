@@ -16,9 +16,9 @@ namespace R34Sharp.Components
         /// <summary>
         /// API Client.
         /// </summary>
-        protected R34Client ApiClient { get; private set; }
+        protected R34ApiClient ApiClient { get; private set; }
 
-        internal void Build(R34Client client)
+        internal void Build(R34ApiClient client)
         {
             this.ApiClient = client;
         }
