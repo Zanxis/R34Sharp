@@ -15,7 +15,7 @@ namespace R34Sharp.Components
     /// </summary>
     public sealed class R34TagsComponent : R34BaseApiComponent
     {
-        private static readonly XmlSerializer _tagsXmlSerializer = new(typeof(R34Tags));
+        private readonly XmlSerializer _tagsXmlSerializer = new(typeof(R34Tags));
 
         /// <summary>
         /// Get a list of Rule34 tags based on a <see cref="R34TagsSearchBuilder"/>.
