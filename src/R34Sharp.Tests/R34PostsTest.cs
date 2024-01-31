@@ -1,5 +1,7 @@
 using R34Sharp.Entities.Posts;
 using R34Sharp.Models;
+using R34Sharp.Search;
+using R34Sharp.Enums;
 
 namespace R34Sharp.Tests
 {
@@ -35,9 +37,9 @@ namespace R34Sharp.Tests
                 Limit = 1000,
                 Tags = tagsPrefab
 
-            }, x => x.FileType == FileType.Video);
+            }, x => x.FileType == R34FileType.Video);
 
-            Assert.All(posts.Data, x => Assert.True(x.FileType == FileType.Video));
+            Assert.All(posts.Data, x => Assert.True(x.FileType == R34FileType.Video));
         }
 
         [Fact]

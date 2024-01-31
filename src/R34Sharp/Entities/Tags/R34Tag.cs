@@ -36,8 +36,7 @@ namespace R34Sharp.Entities.Tags
         [XmlAttribute(AttributeName = "count")] public int PostsCount { get; set; }
         #endregion
 
-        /// <summary>
-        /// </summary>
+        /// <inheritdoc/>
         protected override async Task OnBuildAsync()
         {
             await Task.CompletedTask;

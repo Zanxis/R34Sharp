@@ -23,19 +23,18 @@ namespace R34Sharp.Components
         /// </summary>
         /// <param name="searchBuilder">Search builder for Rule34 Posts.</param>
         /// <returns>A collection of Rule34 posts.</returns>
-        /// <exception cref="IndexOutOfRangeException" />
         /// <exception cref="ArgumentException" />
         public async Task<R34Posts> GetPostsAsync(R34PostsSearchBuilder searchBuilder)
         {
             // Handler Exceptions
             if (searchBuilder.Limit < 1 || searchBuilder.Limit > 1000)
             {
-                await Task.FromException(new IndexOutOfRangeException("The limit allowed for obtaining Posts is a value between 1 and 1000."));
+                await Task.FromException(new ArgumentException("The limit allowed for obtaining Posts is a value between 1 and 1000.", nameof(searchBuilder)));
             }
 
             if (searchBuilder.Tags.Length == 0)
             {
-                await Task.FromException(new ArgumentException("Search tags are missing."));
+                await Task.FromException(new ArgumentException("Search tags are missing.", nameof(searchBuilder)));
             }
 
             // Build Url
@@ -76,14 +75,13 @@ namespace R34Sharp.Components
         /// <param name="searchBuilder">Search builder for Rule34 Posts.</param>
         /// <param name="filter">The filter that will be applied to each request result.</param>
         /// <returns>A collection of Rule34 posts.</returns>
-        /// <exception cref="IndexOutOfRangeException" />
         /// <exception cref="ArgumentException" />
         public async Task<R34Posts> GetPostsByFilterAsync(R34PostsSearchBuilder searchBuilder, Func<R34Post, bool> filter)
         {
             // Handler Exceptions
             if (searchBuilder.Limit < 1 || searchBuilder.Limit > 1000)
             {
-                await Task.FromException(new IndexOutOfRangeException("The limit allowed for obtaining Posts is a value between 1 and 1000."));
+                await Task.FromException(new ArgumentException("The limit allowed for obtaining Posts is a value between 1 and 1000."));
             }
 
             if (searchBuilder.Tags == null || !searchBuilder.Tags.Any())

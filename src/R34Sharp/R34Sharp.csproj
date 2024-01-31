@@ -1,14 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="../Targets/Project_Compilation.targets"></Import>
+	<Import Project="../Targets/Project_Compilation.targets"></Import>
 	<Import Project="../Targets/Project_Infos.targets"></Import>
 	<Import Project="../Targets/Project_Settings.targets"></Import>
 
-    <PropertyGroup>
-        <OutputType>Library</OutputType>
-    </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<InvariantGlobalization>true</InvariantGlobalization>
+	</PropertyGroup>
 
-    <PropertyGroup>
-        <Description>An unofficial .NET Core wrapper for the Rule34 API.</Description>
-        <PackageReleaseNotes></PackageReleaseNotes>
-    </PropertyGroup>
+	<PropertyGroup>
+		<Description>An unofficial .NET Core wrapper for the Rule34 API.</Description>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Copyright>Starciad © 2024</Copyright>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	</PropertyGroup>
 </Project>

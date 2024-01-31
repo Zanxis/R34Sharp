@@ -51,6 +51,7 @@ namespace R34Sharp.Entities.Comments
         [XmlAttribute(AttributeName = "body")] public string Content { get; set; }
         #endregion
 
+        /// <inheritdoc/>
         protected override async Task OnBuildAsync()
         {
             this.CreatedAt = DateTimeHelpers.R34Parse(this.CreatedAtString, "yyyy-dd-MM mm:ss");
