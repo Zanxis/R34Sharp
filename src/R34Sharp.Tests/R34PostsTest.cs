@@ -49,7 +49,7 @@ namespace R34Sharp.Tests
             {
                 Limit = 1000,
                 Tags = tagsPrefab,
-                BlockedTags = new(blockedTagsPrefab)
+                BlockedTags = blockedTagsPrefab,
             });
 
             Assert.All(posts.Data, x => Assert.False(x.HasTag(new("Looking At Viewer"))));

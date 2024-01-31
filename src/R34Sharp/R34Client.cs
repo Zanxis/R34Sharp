@@ -61,11 +61,13 @@ namespace R34Sharp
             {
                 UseCookies = false,
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
+                MaxConnectionsPerServer = 10,
             };
 
             this.Client = new(handler)
             {
                 BaseAddress = new(R34Endpoints.BASE_URI),
+                Timeout = TimeSpan.FromSeconds(30),
             };
 
             this.Client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 R34Sharp");

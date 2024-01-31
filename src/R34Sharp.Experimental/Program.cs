@@ -23,18 +23,21 @@ namespace R34Sharp.Experimental
             R34PostsSearchBuilder searchBuilder = new()
             {
                 Limit = 100,
-                Tags = new R34FormattedTag[]
-                {
-                    new("Bara"),
-                },
+                //Tags = new R34FormattedTag[]
+                //{
+                //    new("Bara"),
+                //},
             };
 
             Console.Clear();
             Console.WriteLine(" [ STARTING ] ");
             Console.WriteLine($"Path: {AssetsDirectory}");
 
+            R34Posts posts = await _client.Posts.GetPostsAsync(searchBuilder);
+            Console.WriteLine($"Post Completed!");
+
             int count = 0;
-            foreach (R34Post post in (await _client.Posts.GetPostsByFilterAsync(searchBuilder, x => x.Rating == R34Rating.Questionable)).Data)
+            foreach (R34Post post in posts.Data)
             {
                 using MemoryStream ms = await post.DownloadFileAsync();
                 byte[] r34FileByteArray = ms.ToArray();
