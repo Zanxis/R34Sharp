@@ -1,4 +1,6 @@
-﻿namespace R34Sharp
+﻿using System.Threading.Tasks;
+
+namespace R34Sharp.Entities
 {
     /// <summary>
     /// Represents an R34Sharp entity.
@@ -8,11 +10,11 @@
         /// <summary>
         /// The current entity's client.
         /// </summary>
-        protected R34ApiClient R34Client { get; private set; }
+        protected R34Client R34Client { get; private set; }
 
-        internal async Task BuildAsync(R34ApiClient instance)
+        internal async Task BuildAsync(R34Client instance)
         {
-            R34Client = instance;
+            this.R34Client = instance;
             await OnBuildAsync();
         }
 

@@ -1,5 +1,9 @@
-﻿using System.Xml.Serialization;
+﻿using R34Sharp.Components;
+using R34Sharp.Net;
+
+using System;
 using System.Net;
+using System.Net.Http;
 
 namespace R34Sharp
 {
@@ -9,14 +13,14 @@ namespace R34Sharp
     /// <remarks>
     /// Responsible for all requests made to Rule34.
     /// </remarks>
-    public sealed class R34ApiClient : IDisposable
+    public sealed class R34Client : IDisposable
     {
         internal HttpClient Client { get; private set; }
 
         /// <summary>
         /// Checks if this class has already been Disposable.
         /// </summary>
-        public bool Disposed { get; private set; }
+        public bool DisposedValue => this.disposedValue;
 
         /// <summary>
         /// API component responsible for posts.
@@ -33,23 +37,25 @@ namespace R34Sharp
         /// </summary>
         public R34CommentsComponent Comments { get; private set; }
 
+        private bool disposedValue;
+
         /// <summary>
         /// Initializes the Rule34 Wrapper to enable communications between the website and the client.
         /// </summary>
-        public R34ApiClient()
+        public R34Client()
         {
-            StartClient();
+            BuildClient();
 
-            Posts = new();
-            Tags = new();
-            Comments = new();
+            this.Posts = new();
+            this.Tags = new();
+            this.Comments = new();
 
-            Posts.Build(this);
-            Tags.Build(this);
-            Comments.Build(this);
+            this.Posts.Build(this);
+            this.Tags.Build(this);
+            this.Comments.Build(this);
         }
 
-        private void StartClient()
+        private void BuildClient()
         {
             HttpClientHandler handler = new()
             {
@@ -57,22 +63,30 @@ namespace R34Sharp
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
             };
 
-            Client = new(handler)
+            this.Client = new(handler)
             {
                 BaseAddress = new(R34Endpoints.BASE_URI),
             };
 
-            Client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 R34Sharp");
+            this.Client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 R34Sharp");
         }
 
-        /// <summary>
-        /// Dispose and initiate API client shutdown processes. In addition to relieving memory processes.
-        /// </summary>
-        public void Dispose()
+        private void Dispose(bool disposing)
         {
-            Client.Dispose();
-            Disposed = true;
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    ((IDisposable)this.Client).Dispose();
+                }
 
+                disposedValue = true;
+            }
+        }
+
+        void IDisposable.Dispose()
+        {
+            Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
     }

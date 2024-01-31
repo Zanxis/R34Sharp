@@ -1,6 +1,12 @@
-﻿using System.Xml.Serialization;
+﻿using R34Sharp.Entities;
 
-namespace R34Sharp
+using System;
+using System.IO;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
+
+namespace R34Sharp.Components
 {
     /// <summary>
     /// Component responsible for creating expandable processes for the API.
@@ -10,11 +16,11 @@ namespace R34Sharp
         /// <summary>
         /// API Client.
         /// </summary>
-        protected R34ApiClient ApiClient { get; private set; }
+        protected R34Client ApiClient { get; private set; }
 
-        internal void Build(R34ApiClient client)
+        internal void Build(R34Client client)
         {
-            ApiClient = client;
+            this.ApiClient = client;
         }
 
         /// <summary>
@@ -31,12 +37,12 @@ namespace R34Sharp
             try
             {
                 HttpRequestMessage message = new(HttpMethod.Get, url);
-                HttpResponseMessage msg = await ApiClient.Client.SendAsync(message);
+                HttpResponseMessage msg = await this.ApiClient.Client.SendAsync(message);
 
                 msg.EnsureSuccessStatusCode();
 
                 result = await Task.Run(async () => (T)serializer.Deserialize(new StringReader(await msg.Content.ReadAsStringAsync())));
-                await result.BuildAsync(ApiClient);
+                await result.BuildAsync(this.ApiClient);
             }
             catch (Exception) { }
 

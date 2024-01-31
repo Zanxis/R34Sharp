@@ -1,4 +1,4 @@
-﻿namespace R34Sharp
+﻿namespace R34Sharp.Models
 {
     /// <summary>
     /// The Rule34 model Tag Builder.
@@ -10,8 +10,8 @@
         /// </summary>
         public string Name
         {
-            get => name;
-            set => name = value;
+            get => this.name;
+            set => this.name = value;
         }
         private string name;
 
@@ -24,7 +24,7 @@
         /// <param name="value">The name of the Rule34 Tag.</param>
         public R34TagModel(string value)
         {
-            name = value.Trim().Replace(' ', '_').ToLower();
+            this.name = value.Trim().Replace(' ', '_').ToLower();
         }
 
         /// <summary>
@@ -33,7 +33,7 @@
         /// <returns>Tag Name.</returns>
         public override string ToString()
         {
-            return name;
+            return this.name;
         }
     }
 }

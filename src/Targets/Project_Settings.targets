@@ -8,7 +8,7 @@
 	<!-- GENERAL -->
 	<PropertyGroup>
 		<Nullable>disable</Nullable>
-		<ImplicitUsings>True</ImplicitUsings>
+		<ImplicitUsings>disable</ImplicitUsings>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 	</PropertyGroup>
 </Project>

@@ -1,6 +1,12 @@
-﻿using System.Xml.Serialization;
+﻿using R34Sharp.Entities.Comments;
+using R34Sharp.Net;
+using R34Sharp.Search;
+using R34Sharp.Url;
 
-namespace R34Sharp
+using System.Threading.Tasks;
+using System.Xml.Serialization;
+
+namespace R34Sharp.Components
 {
     /// <summary>
     /// API component responsible for processes involving Rule34 comments chains.

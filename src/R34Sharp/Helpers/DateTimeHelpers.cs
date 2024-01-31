@@ -1,6 +1,7 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
-namespace R34Sharp
+namespace R34Sharp.Helpers
 {
     internal static class DateTimeHelpers
     {

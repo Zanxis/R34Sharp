@@ -1,6 +1,7 @@
-﻿using System.Xml.Serialization;
+﻿using System.Threading.Tasks;
+using System.Xml.Serialization;
 
-namespace R34Sharp
+namespace R34Sharp.Entities.Tags
 {
     /// <summary>
     /// A Rule34 tag.

@@ -1,4 +1,8 @@
-﻿namespace R34Sharp
+﻿using R34Sharp.Enums;
+
+using System;
+
+namespace R34Sharp.Helpers
 {
     internal static class FileHelpers
     {

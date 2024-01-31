@@ -1,8 +1,11 @@
+using R34Sharp.Entities.Posts;
+using R34Sharp.Models;
+
 namespace R34Sharp.Tests
 {
     public class R34PostsTest
     {
-        private static readonly R34ApiClient _client = new();
+        private static readonly R34Client _client = new();
         private static readonly R34TagModel[] tagsPrefab = new R34TagModel[]
         {
             new("Little Mac"),

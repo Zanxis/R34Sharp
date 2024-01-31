@@ -1,6 +1,15 @@
-﻿using System.Xml.Serialization;
+﻿using R34Sharp.Entities.Posts;
+using R34Sharp.Net;
+using R34Sharp.Search;
+using R34Sharp.Url;
 
-namespace R34Sharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
+
+namespace R34Sharp.Components
 {
     /// <summary>
     /// API component responsible for processes involving Rule34 post chains.
@@ -19,8 +28,15 @@ namespace R34Sharp
         public async Task<R34Posts> GetPostsAsync(R34PostsSearchBuilder searchBuilder)
         {
             // Handler Exceptions
-            if (searchBuilder.Limit < 1 || searchBuilder.Limit > 1000) await Task.FromException(new IndexOutOfRangeException("The limit allowed for obtaining Posts is a value between 1 and 1000."));
-            if (searchBuilder.Tags == null || !searchBuilder.Tags.Any()) await Task.FromException(new ArgumentException("Search tags are missing."));
+            if (searchBuilder.Limit < 1 || searchBuilder.Limit > 1000)
+            {
+                await Task.FromException(new IndexOutOfRangeException("The limit allowed for obtaining Posts is a value between 1 and 1000."));
+            }
+
+            if (searchBuilder.Tags.Length == 0)
+            {
+                await Task.FromException(new ArgumentException("Search tags are missing."));
+            }
 
             // Build Url
             UrlBuilder urlBuilder = new(R34Endpoints.INDEX);
@@ -30,12 +46,22 @@ namespace R34Sharp
             urlBuilder.AddParameter("limit", searchBuilder.Limit.ToString());
             urlBuilder.AddParameter("tags", searchBuilder.GetTagsString());
 
-            if (searchBuilder.Offset.HasValue) urlBuilder.AddParameter("pid", searchBuilder.Offset.Value.ToString());
-            if (searchBuilder.Id.HasValue) urlBuilder.AddParameter("id", searchBuilder.Id.Value.ToString());
+            if (searchBuilder.Offset.HasValue)
+            {
+                urlBuilder.AddParameter("pid", searchBuilder.Offset.Value.ToString());
+            }
+
+            if (searchBuilder.Id.HasValue)
+            {
+                urlBuilder.AddParameter("id", searchBuilder.Id.Value.ToString());
+            }
 
             // Get Result
             R34Posts postsResult = await GetAsync<R34Posts>(urlBuilder.Build(), _postsXmlSerializer);
-            if (searchBuilder.BlockedTags.HasValue) postsResult.Data = postsResult.Data.Where(x => !x.HasTags(searchBuilder.BlockedTags.Value)).ToArray();
+            if (searchBuilder.BlockedTags.HasValue)
+            {
+                postsResult.Data = postsResult.Data.Where(x => !x.HasTags(searchBuilder.BlockedTags.Value)).ToArray();
+            }
 
             return postsResult;
         }
@@ -55,8 +81,15 @@ namespace R34Sharp
         public async Task<R34Posts> GetPostsByFilterAsync(R34PostsSearchBuilder searchBuilder, Func<R34Post, bool> filter)
         {
             // Handler Exceptions
-            if (searchBuilder.Limit < 1 || searchBuilder.Limit > 1000) await Task.FromException(new IndexOutOfRangeException("The limit allowed for obtaining Posts is a value between 1 and 1000."));
-            if (searchBuilder.Tags == null || !searchBuilder.Tags.Any()) await Task.FromException(new ArgumentException("Search tags are missing."));
+            if (searchBuilder.Limit < 1 || searchBuilder.Limit > 1000)
+            {
+                await Task.FromException(new IndexOutOfRangeException("The limit allowed for obtaining Posts is a value between 1 and 1000."));
+            }
+
+            if (searchBuilder.Tags == null || !searchBuilder.Tags.Any())
+            {
+                await Task.FromException(new ArgumentException("Search tags are missing."));
+            }
 
             // Posts
             List<R34Post> foundPosts = new();
@@ -68,10 +101,16 @@ namespace R34Sharp
                 searchBuilder.Offset = new(searchBuilder.Offset.Value + currentChunk);
                 R34Posts posts = await GetPostsAsync(searchBuilder);
 
-                if (posts == null || posts.Data == null || posts.Count == 0) break;
+                if (posts == null || posts.Data == null || posts.Count == 0)
+                {
+                    break;
+                }
 
                 foundPosts.AddRange(posts.Data.Where(filter));
-                if (foundPosts.Count >= searchBuilder.Limit) break;
+                if (foundPosts.Count >= searchBuilder.Limit)
+                {
+                    break;
+                }
 
                 currentChunk++;
             }

@@ -1,6 +1,14 @@
-﻿using System.Xml.Serialization;
+﻿using R34Sharp.Entities.Tags;
+using R34Sharp.Enums;
+using R34Sharp.Net;
+using R34Sharp.Search;
+using R34Sharp.Url;
 
-namespace R34Sharp
+using System;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
+
+namespace R34Sharp.Components
 {
     /// <summary>
     /// API component responsible for processes involving Rule34 tags chains.
@@ -18,7 +26,10 @@ namespace R34Sharp
         public async Task<R34Tags> GetTagsAsync(R34TagsSearchBuilder searchBuilder)
         {
             // Handler Exceptions
-            if (searchBuilder.Limit < 1 || searchBuilder.Limit > 100) await Task.FromException(new IndexOutOfRangeException("The limit allowed for obtaining Tags is a value between 1 and 100."));
+            if (searchBuilder.Limit < 1 || searchBuilder.Limit > 100)
+            {
+                await Task.FromException(new IndexOutOfRangeException("The limit allowed for obtaining Tags is a value between 1 and 100."));
+            }
 
             // Build Url
             UrlBuilder urlBuilder = new(R34Endpoints.INDEX);
@@ -29,10 +40,18 @@ namespace R34Sharp
 
             switch (searchBuilder.SearchType)
             {
-                case R34TagSearchType.Name: urlBuilder.AddParameter("name", searchBuilder.Search); break;
-                case R34TagSearchType.Pattern: urlBuilder.AddParameter("name_pattern", searchBuilder.Search); break;
-                case R34TagSearchType.Id: urlBuilder.AddParameter("id", searchBuilder.Search); break;
-                default: urlBuilder.AddParameter("name", searchBuilder.Search); break;
+                case R34TagSearchType.Name:
+                    urlBuilder.AddParameter("name", searchBuilder.Search);
+                    break;
+                case R34TagSearchType.Pattern:
+                    urlBuilder.AddParameter("name_pattern", searchBuilder.Search);
+                    break;
+                case R34TagSearchType.Id:
+                    urlBuilder.AddParameter("id", searchBuilder.Search);
+                    break;
+                default:
+                    urlBuilder.AddParameter("name", searchBuilder.Search);
+                    break;
             }
 
             // Get Result

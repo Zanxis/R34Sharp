@@ -1,4 +1,4 @@
-﻿namespace R34Sharp
+﻿namespace R34Sharp.Tools
 {
     /// <summary>
     /// An optional value that can be set or ignored.
@@ -21,7 +21,7 @@
         /// </summary>
         public Optional()
         {
-            HasValue = false;
+            this.HasValue = false;
         }
 
         /// <summary>
@@ -30,8 +30,8 @@
         /// <param name="value">The value that the current instance will have.</param>
         public Optional(T value)
         {
-            HasValue = true;
-            Value = value;
+            this.HasValue = true;
+            this.Value = value;
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿namespace R34Sharp
+﻿namespace R34Sharp.Search
 {
     /// <summary>
     /// A search builder for Rule34 post comments.
     /// </summary>
-    public class R34CommentsSearchBuilder
+    public sealed class R34CommentsSearchBuilder
     {
         /// <summary>
         /// The ID of the post.
@@ -15,7 +15,7 @@
         /// </summary>
         public R34CommentsSearchBuilder()
         {
-            WithId(0);
+            _ = WithId(0);
         }
 
         /// <summary>
@@ -25,7 +25,7 @@
         /// <returns>This search builder.</returns>
         public R34CommentsSearchBuilder WithId(ulong value)
         {
-            PostId = value;
+            this.PostId = value;
             return this;
         }
     }

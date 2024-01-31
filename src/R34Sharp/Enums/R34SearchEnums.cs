@@ -1,4 +1,4 @@
-﻿namespace R34Sharp
+﻿namespace R34Sharp.Enums
 {
     /// <summary>
     /// Search type by Rule34 Tags.

@@ -1,9 +1,11 @@
-﻿namespace R34Sharp
+﻿using R34Sharp.Enums;
+
+namespace R34Sharp.Search
 {
     /// <summary>
     /// A search builder for Rule34 Tags.
     /// </summary>
-    public class R34TagsSearchBuilder
+    public sealed class R34TagsSearchBuilder
     {
         /// <summary>
         /// The type of search that will be performed on this browser.
@@ -28,9 +30,9 @@
         /// </summary>
         public R34TagsSearchBuilder()
         {
-            WithSearchType(R34TagSearchType.Name);
-            WithSearch(string.Empty);
-            WithLimit(100);
+            _ = WithSearchType(R34TagSearchType.Name);
+            _ = WithSearch(string.Empty);
+            _ = WithLimit(100);
         }
 
         /// <summary>
@@ -40,7 +42,7 @@
         /// <returns>This search builder.</returns>
         public R34TagsSearchBuilder WithSearchType(R34TagSearchType value)
         {
-            SearchType = value;
+            this.SearchType = value;
             return this;
         }
 
@@ -51,7 +53,7 @@
         /// <returns>This search builder.</returns>
         public R34TagsSearchBuilder WithSearch(string value)
         {
-            Search = value;
+            this.Search = value;
             return this;
         }
 
@@ -62,7 +64,7 @@
         /// <returns>This search builder.</returns>
         public R34TagsSearchBuilder WithLimit(int value)
         {
-            Limit = value;
+            this.Limit = value;
             return this;
         }
     }

@@ -1,12 +1,17 @@
-﻿using System.Collections.Concurrent;
-using System.ComponentModel;
+﻿using R34Sharp.Entities.Comments;
+using R34Sharp.Enums;
+using R34Sharp.Helpers;
+using R34Sharp.Models;
+
+using System;
+using System.Collections.Concurrent;
+using System.IO;
 using System.Numerics;
+using System.Threading.Tasks;
 using System.Xml;
-using System.Xml.Linq;
-using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace R34Sharp
+namespace R34Sharp.Entities.Posts
 {
     /// <summary>
     /// A Rule34 post.
@@ -158,31 +163,30 @@ namespace R34Sharp
         }
         private async Task SetFilesInfosAsync()
         {
-            FileName = Path.GetFileNameWithoutExtension(FileUrl);
-            FileExtension = Path.GetExtension(FileUrl);
-            FileType = FileHelpers.GetMediaType(FileExtension);
+            this.FileName = Path.GetFileNameWithoutExtension(this.FileUrl);
+            this.FileExtension = Path.GetExtension(this.FileUrl);
+            this.FileType = FileHelpers.GetMediaType(this.FileExtension);
 
             await Task.CompletedTask;
         }
         private async Task SetInfosAsync()
         {
             // CREATE TIMESTAMP
-            CreatedAt = DateTimeHelpers.R34Parse(CreatedAtString, "ddd MMM dd HH:mm:ss zzz yyyy");
+            this.CreatedAt = DateTimeHelpers.R34Parse(this.CreatedAtString, "ddd MMM dd HH:mm:ss zzz yyyy");
 
             // DIMENSIONS
-            FileDimensions = new(Width, Height);
-            PreviewFileDimensions = new(PreviewWidth, PreviewHeight);
+            this.FileDimensions = new(this.Width, this.Height);
+            this.PreviewFileDimensions = new(this.PreviewWidth, this.PreviewHeight);
 
             // RATING
-            switch (RatingString)
+            this.Rating = this.RatingString switch
             {
-                case "g": Rating = R34Rating.General; break;
-                case "s": Rating = R34Rating.Safe; break;
-                case "q": Rating = R34Rating.Questionable; break;
-                case "e": Rating = R34Rating.Explicit; break;
-                default: Rating = R34Rating.General; break;
-            }
-
+                "g" => R34Rating.General,
+                "s" => R34Rating.Safe,
+                "q" => R34Rating.Questionable,
+                "e" => R34Rating.Explicit,
+                _ => R34Rating.General,
+            };
             await Task.CompletedTask;
         }
 
@@ -192,9 +196,9 @@ namespace R34Sharp
         /// <returns>
         /// Collection of post tags.
         /// </returns>
-        public async Task<IEnumerable<R34TagModel>> GetTagsAsync()
+        public async Task<R34TagModel[]> GetTagsAsync()
         {
-            string[] tagsArray = TagsString.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] tagsArray = this.TagsString.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             ConcurrentBag<R34TagModel> tags = new();
 
             await Parallel.ForEachAsync(tagsArray, async (item, token) =>
@@ -215,7 +219,7 @@ namespace R34Sharp
         /// <returns>True if the Tag is found.</returns>
         public bool HasTag(R34TagModel tag)
         {
-            return Array.Find(TagsString.Split(' ', StringSplitOptions.RemoveEmptyEntries), x => x == tag.Name) != null;
+            return Array.Find(this.TagsString.Split(' ', StringSplitOptions.RemoveEmptyEntries), x => x == tag.Name) != null;
         }
 
         /// <summary>
@@ -223,12 +227,14 @@ namespace R34Sharp
         /// </summary>
         /// <param name="tags">The tags to be fetch.</param>
         /// <returns>True if all Tags are found.</returns>
-        public bool HasTags(IEnumerable<R34TagModel> tags)
+        public bool HasTags(R34TagModel[] tags)
         {
-            foreach (R34TagModel tag in tags)
+            for (int i = 0; i < tags.Length; i++)
             {
-                if (!HasTag(tag))
+                if (!HasTag(tags[i]))
+                {
                     return false;
+                }
             }
 
             return true;
@@ -241,10 +247,7 @@ namespace R34Sharp
         /// <exception cref="InvalidOperationException" />
         public async Task<R34Comments> GetCommentsAsync()
         {
-            if (!HasComments)
-                return null;
-
-            return await Task.FromResult(await R34Client.Comments.GetCommentsAsync(new() { PostId = Id }));
+            return !this.HasComments ? null : await Task.FromResult(await this.R34Client.Comments.GetCommentsAsync(new() { PostId = this.Id }));
         }
 
         /// <summary>
@@ -253,7 +256,7 @@ namespace R34Sharp
         /// <returns>A <see cref="MemoryStream"/> containing the post file.</returns>
         public async Task<MemoryStream> DownloadFileAsync()
         {
-            return await Task.FromResult(await DownloadAsync(FileUrl));
+            return await Task.FromResult(await DownloadAsync(this.FileUrl));
         }
 
         /// <summary>
@@ -262,7 +265,7 @@ namespace R34Sharp
         /// <returns>A <see cref="MemoryStream"/> containing the post preview file.</returns>
         public async Task<MemoryStream> DownloadFilePreviewAsync()
         {
-            return await Task.FromResult(await DownloadAsync(PreviewUrl));
+            return await Task.FromResult(await DownloadAsync(this.PreviewUrl));
         }
 
         private async Task<MemoryStream> DownloadAsync(string url)
@@ -270,10 +273,10 @@ namespace R34Sharp
             MemoryStream ms = new();
 
             // Get Stream
-            using Stream fileStream = await R34Client.Client.GetStreamAsync(url);
+            using Stream fileStream = await this.R34Client.Client.GetStreamAsync(url);
             await fileStream.CopyToAsync(ms);
 
-            // Return Stream 
+            // Return Stream
             return ms;
         }
     }

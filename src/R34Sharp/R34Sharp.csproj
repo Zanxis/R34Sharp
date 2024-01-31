@@ -1,7 +1,7 @@
-﻿<Project Sdk='Microsoft.NET.Sdk'>
-    <Import Project='../Targets/Project_Compilation.targets'></Import>
-	<Import Project='../Targets/Project_Infos.targets'></Import>
-	<Import Project='../Targets/Project_Settings.targets'></Import>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="../Targets/Project_Compilation.targets"></Import>
+	<Import Project="../Targets/Project_Infos.targets"></Import>
+	<Import Project="../Targets/Project_Settings.targets"></Import>
 
     <PropertyGroup>
         <OutputType>Library</OutputType>

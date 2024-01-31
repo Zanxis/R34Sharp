@@ -1,4 +1,4 @@
-﻿namespace R34Sharp
+﻿namespace R34Sharp.Net
 {
     internal static class R34Endpoints
     {
