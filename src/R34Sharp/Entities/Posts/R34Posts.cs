@@ -1,8 +1,10 @@
-﻿using System.Xml;
-using System.Xml.Schema;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Serialization;
 
-namespace R34Sharp
+namespace R34Sharp.Entities.Posts
 {
     /// <summary>
     /// Represents a collection of Rule34 posts.
@@ -18,7 +20,7 @@ namespace R34Sharp
         /// <summary>
         /// The count of posts present in this collection.
         /// </summary>
-        [XmlIgnore] public ulong Count => Data == null ? 0 : (ulong)Data.Length;
+        [XmlIgnore] public ulong Count => this.Data == null ? 0 : (ulong)this.Data.Length;
 
         /// <summary>
         /// The offset of current collection.
@@ -27,22 +29,15 @@ namespace R34Sharp
 
         internal override async Task BuildAsync(R34ApiClient instance)
         {
-            try
+            if (this.Data == null)
             {
-                if (Data == null)
-                    return;
-
-                await Parallel.ForEachAsync(Data, new Func<R34Post, CancellationToken, ValueTask>(async (current, token) =>
-                {
-                    await current.BuildAsync(instance);
-                }));
-            }
-            catch (Exception e)
-            {
-                await Task.FromException(e);
+                return;
             }
 
-            await Task.CompletedTask;
+            await Parallel.ForEachAsync(this.Data, new Func<R34Post, CancellationToken, ValueTask>(async (current, token) =>
+            {
+                await current.BuildAsync(instance);
+            }));
         }
     }
 }

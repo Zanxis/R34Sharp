@@ -1,6 +1,10 @@
-﻿namespace R34Sharp
+﻿using R34Sharp.Enums;
+
+using System;
+
+namespace R34Sharp.IO
 {
-    internal static class FileHelpers
+    internal static class MediaFileFormatDetector
     {
         private static readonly string[] ImageExtensions =
         {

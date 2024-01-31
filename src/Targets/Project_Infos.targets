@@ -8,7 +8,7 @@
 		<PackageIcon>R34Sharp_Icon.png</PackageIcon>
 		<Company>Starciad</Company>
 		<Authors>Starciad</Authors>
-		<Copyright>Starciad © 2023</Copyright>
+		<Copyright>Starciad © 2024</Copyright>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>api; wrapper; csharp; wrapper-api; nsfw; nsfw-api; rule34api; dotnet; api-wrapper; rule34; dotnet-api; r34; rule34-api; rule34xxx; dotnet-nsfw; dotnet-core; rule34-downloader;</PackageTags>
 		<NeutralLanguage>en-US</NeutralLanguage>
@@ -20,14 +20,14 @@
 
 	<!-- VERSION -->
     <PropertyGroup>
-        <Version>1.3.1</Version>
+        <Version>2.5.0</Version>
         <VersionPrefix></VersionPrefix>
         <VersionSuffix></VersionSuffix>
     </PropertyGroup>
 
 	<!-- FILES IMPORT -->
 	<ItemGroup>
-		<None Include="..\..\LICENSE">
+		<None Include="..\..\LICENSE.txt">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
@@ -37,6 +37,9 @@
 			<PackagePath>\</PackagePath>
 		</None>
 
-		<None Include="..\..\..\.github\assets\icon\R34Sharp_Icon.png" Pack="true" PackagePath="/" />
+		<None Include="..\..\.github\assets\icon\R34Sharp_Icon.png">
+			<Pack>true</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 	</ItemGroup>
 </Project>

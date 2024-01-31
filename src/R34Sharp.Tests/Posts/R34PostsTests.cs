@@ -1,13 +1,18 @@
-namespace R34Sharp.Tests
+using R34Sharp.Entities.Posts;
+using R34Sharp.Enums;
+using R34Sharp.Models;
+using R34Sharp.Search;
+
+namespace R34Sharp.Tests.Posts
 {
-    public class R34PostsTest
+    public class R34PostsTests
     {
         private static readonly R34ApiClient _client = new();
-        private static readonly R34TagModel[] tagsPrefab = new R34TagModel[]
+        private static readonly R34FormattedTag[] tagsPrefab = new R34FormattedTag[]
         {
             new("Little Mac"),
         };
-        private static readonly R34TagModel[] blockedTagsPrefab = new R34TagModel[]
+        private static readonly R34FormattedTag[] blockedTagsPrefab = new R34FormattedTag[]
         {
             new("Looking At Viewer"),
         };
@@ -32,9 +37,9 @@ namespace R34Sharp.Tests
                 Limit = 1000,
                 Tags = tagsPrefab
 
-            }, x => x.FileType == FileType.Video);
+            }, x => x.FileType == R34FileType.Video);
 
-            Assert.All(posts.Data, x => Assert.True(x.FileType == FileType.Video));
+            Assert.All(posts.Data, x => Assert.True(x.FileType == R34FileType.Video));
         }
 
         [Fact]
@@ -44,7 +49,7 @@ namespace R34Sharp.Tests
             {
                 Limit = 1000,
                 Tags = tagsPrefab,
-                BlockedTags = new(blockedTagsPrefab)
+                BlockedTags = blockedTagsPrefab,
             });
 
             Assert.All(posts.Data, x => Assert.False(x.HasTag(new("Looking At Viewer"))));
@@ -53,18 +58,18 @@ namespace R34Sharp.Tests
         [Fact]
         public async Task Block_Requests_Outside_The_Limit_Range_Async()
         {
-            await Assert.ThrowsAnyAsync<Exception>(async () =>
+            _ = await Assert.ThrowsAnyAsync<Exception>(async () =>
             {
-                await _client.Posts.GetPostsAsync(new()
+                _ = await _client.Posts.GetPostsAsync(new()
                 {
                     Limit = 0,
                     Tags = tagsPrefab
                 });
             });
 
-            await Assert.ThrowsAnyAsync<Exception>(async () =>
+            _ = await Assert.ThrowsAnyAsync<Exception>(async () =>
             {
-                await _client.Posts.GetPostsAsync(new()
+                _ = await _client.Posts.GetPostsAsync(new()
                 {
                     Limit = 1001,
                     Tags = tagsPrefab
@@ -75,12 +80,12 @@ namespace R34Sharp.Tests
         [Fact]
         public async Task Block_Requests_Without_Tags_Async()
         {
-            await Assert.ThrowsAnyAsync<Exception>(async () =>
+            _ = await Assert.ThrowsAnyAsync<Exception>(async () =>
             {
-                await _client.Posts.GetPostsAsync(new()
+                _ = await _client.Posts.GetPostsAsync(new()
                 {
                     Limit = 0,
-                    Tags = Array.Empty<R34TagModel>()
+                    Tags = Array.Empty<R34FormattedTag>()
                 });
             });
         }

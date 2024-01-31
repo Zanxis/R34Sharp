@@ -1,7 +1,10 @@
-﻿using System.Xml;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Serialization;
 
-namespace R34Sharp
+namespace R34Sharp.Entities.Tags
 {
     /// <summary>
     /// Represents a collection of Rule34 tags.
@@ -22,26 +25,19 @@ namespace R34Sharp
         /// <summary>
         /// The count of comments present in this collection.
         /// </summary>
-        [XmlIgnore] public ulong Count => Data == null ? 0 : (ulong)Data.Length;
+        [XmlIgnore] public ulong Count => this.Data == null ? 0 : (ulong)this.Data.Length;
 
         internal override async Task BuildAsync(R34ApiClient instance)
         {
-            try
+            if (this.Data == null)
             {
-                if (Data == null)
-                    return;
-
-                await Parallel.ForEachAsync(Data, new Func<R34Tag, CancellationToken, ValueTask>(async (current, token) =>
-                {
-                    await current.BuildAsync(instance);
-                }));
-            }
-            catch (Exception e)
-            {
-                await Task.FromException(e);
+                return;
             }
 
-            await Task.CompletedTask;
+            await Parallel.ForEachAsync(this.Data, new Func<R34Tag, CancellationToken, ValueTask>(async (current, token) =>
+            {
+                await current.BuildAsync(instance);
+            }));
         }
     }
 }

@@ -1,7 +1,11 @@
-﻿using System.Xml;
+﻿using R34Sharp.Date;
+
+using System;
+using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Serialization;
 
-namespace R34Sharp
+namespace R34Sharp.Entities.Comments
 {
     /// <summary>
     /// A Rule34 post comment.
@@ -9,12 +13,6 @@ namespace R34Sharp
     [XmlRoot(ElementName = "comment")]
     public sealed class R34Comment : R34Entity
     {
-        #region HEADER
-        /// <summary>
-        /// Date and time the comment was published.
-        /// </summary>
-        [XmlIgnore] public DateTime CreatedAt { get; private set; }
-        #endregion
         #region FILE
         /// <summary>
         /// The ID of comment.
@@ -47,11 +45,9 @@ namespace R34Sharp
         [XmlAttribute(AttributeName = "body")] public string Content { get; set; }
         #endregion
 
-        /// <summary>
-        /// </summary>
+        /// <inheritdoc/>
         protected override async Task OnBuildAsync()
         {
-            CreatedAt = DateTimeHelpers.R34Parse(CreatedAtString, "yyyy-dd-MM mm:ss");
             await Task.CompletedTask;
         }
     }

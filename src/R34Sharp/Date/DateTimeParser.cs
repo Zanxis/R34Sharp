@@ -1,8 +1,9 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
-namespace R34Sharp
+namespace R34Sharp.Date
 {
-    internal static class DateTimeHelpers
+    internal static class DateTimeParser
     {
         internal static DateTime R34Parse(string datetimeString, string format)
         {

@@ -1,9 +1,13 @@
-﻿namespace R34Sharp
+﻿using R34Sharp.Enums;
+
+using System;
+
+namespace R34Sharp.Search
 {
     /// <summary>
     /// A search builder for Rule34 Tags.
     /// </summary>
-    public class R34TagsSearchBuilder
+    public sealed class R34TagsSearchBuilder
     {
         /// <summary>
         /// The type of search that will be performed on this browser.
@@ -21,16 +25,30 @@
         /// <remarks>
         /// The value must be between 1 and 100.
         /// </remarks>
-        public int Limit { get; set; }
+        public int Limit
+        {
+            get => this._limit;
+            set
+            {
+                if (value < 1 || value > 100)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "The limit must be between 1 and 100.");
+                }
+
+                this._limit = value;
+            }
+        }
+
+        private int _limit;
 
         /// <summary>
         /// Build a custom search for Rule34 Tags.
         /// </summary>
         public R34TagsSearchBuilder()
         {
-            WithSearchType(R34TagSearchType.Name);
-            WithSearch(string.Empty);
-            WithLimit(100);
+            _ = WithSearchType(R34TagSearchType.Name);
+            _ = WithSearch(string.Empty);
+            _ = WithLimit(100);
         }
 
         /// <summary>
@@ -40,7 +58,7 @@
         /// <returns>This search builder.</returns>
         public R34TagsSearchBuilder WithSearchType(R34TagSearchType value)
         {
-            SearchType = value;
+            this.SearchType = value;
             return this;
         }
 
@@ -51,7 +69,7 @@
         /// <returns>This search builder.</returns>
         public R34TagsSearchBuilder WithSearch(string value)
         {
-            Search = value;
+            this.Search = value;
             return this;
         }
 
@@ -62,7 +80,7 @@
         /// <returns>This search builder.</returns>
         public R34TagsSearchBuilder WithLimit(int value)
         {
-            Limit = value;
+            this.Limit = value;
             return this;
         }
     }

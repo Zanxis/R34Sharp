@@ -1,4 +1,7 @@
-﻿using R34Sharp;
+﻿using R34Sharp.Entities.Posts;
+using R34Sharp.Enums;
+using R34Sharp.Models;
+using R34Sharp.Search;
 
 namespace R34Sharp.Experimental
 {
@@ -6,19 +9,21 @@ namespace R34Sharp.Experimental
     {
         private static string AssetsDirectory => Path.Combine(Directory.GetCurrentDirectory(), "R34Assets");
 
-        private static R34ApiClient _client = new();
+        private static readonly R34ApiClient _client = new();
 
         [MTAThread]
-        private static async Task Main() {
+        private static async Task Main()
+        {
 
             if (!Directory.Exists(AssetsDirectory))
             {
-                Directory.CreateDirectory(AssetsDirectory);
+                _ = Directory.CreateDirectory(AssetsDirectory);
             }
 
-            R34PostsSearchBuilder searchBuilder = new() {
+            R34PostsSearchBuilder searchBuilder = new()
+            {
                 Limit = 100,
-                Tags = new R34TagModel[]
+                Tags = new R34FormattedTag[]
                 {
                     new("Bara"),
                 },
@@ -28,15 +33,18 @@ namespace R34Sharp.Experimental
             Console.WriteLine(" [ STARTING ] ");
             Console.WriteLine($"Path: {AssetsDirectory}");
 
+            R34Posts posts = await _client.Posts.GetPostsByFilterAsync(searchBuilder, x => x.FileType == R34FileType.Image);
+            Console.WriteLine($"Request Completed!");
+
             int count = 0;
-            foreach (R34Post post in (await _client.Posts.GetPostsByFilterAsync(searchBuilder, x => x.Rating == R34Rating.Questionable)).Data)
+            foreach (R34Post post in posts.Data)
             {
                 using MemoryStream ms = await post.DownloadFileAsync();
                 byte[] r34FileByteArray = ms.ToArray();
 
                 await File.WriteAllBytesAsync(Path.Combine(AssetsDirectory, $"{post.FileName}{post.FileExtension}"), r34FileByteArray);
 
-                Console.WriteLine($"File #{count} Donwloaded! ({(r34FileByteArray.Length / (Math.Pow(1024, 2))).ToString("0.###")}mb)");
+                Console.WriteLine($"File #{count} Donwloaded! ({r34FileByteArray.Length / Math.Pow(1024, 2):0.###}mb)");
                 count++;
             }
         }

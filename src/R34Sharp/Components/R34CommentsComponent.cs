@@ -1,13 +1,19 @@
-﻿using System.Xml.Serialization;
+﻿using R34Sharp.Entities.Comments;
+using R34Sharp.Net;
+using R34Sharp.Search;
+using R34Sharp.Url;
 
-namespace R34Sharp
+using System.Threading.Tasks;
+using System.Xml.Serialization;
+
+namespace R34Sharp.Components
 {
     /// <summary>
     /// API component responsible for processes involving Rule34 comments chains.
     /// </summary>
     public sealed class R34CommentsComponent : R34BaseApiComponent
     {
-        private static readonly XmlSerializer _commentsXmlSerializer = new(typeof(R34Comments));
+        private readonly XmlSerializer _commentsXmlSerializer = new(typeof(R34Comments));
 
         /// <summary>
         /// Get comments for given Rule34 post based on a <see cref="R34CommentsSearchBuilder"/>.
@@ -24,7 +30,7 @@ namespace R34Sharp
             urlBuilder.AddParameter("post_id", searchBuilder.PostId.ToString());
 
             // Get Result
-            return await GetAsync<R34Comments>(urlBuilder.Build(), _commentsXmlSerializer);
+            return await GetAsync<R34Comments>(urlBuilder.Build(), this._commentsXmlSerializer);
         }
     }
 }

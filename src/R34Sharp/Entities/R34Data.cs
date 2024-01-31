@@ -1,4 +1,6 @@
-﻿namespace R34Sharp
+﻿using System.Threading.Tasks;
+
+namespace R34Sharp.Entities
 {
     /// <summary>
     /// Represents a generic data collection of R34Sharp entities.
