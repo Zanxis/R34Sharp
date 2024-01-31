@@ -10,9 +10,8 @@
 
 	<PropertyGroup>
 		<Description>An unofficial .NET Core wrapper for the Rule34 API.</Description>
-		<PackageReleaseNotes></PackageReleaseNotes>
+		<PackageReleaseNotes>General changes and reorganizations of the project, aiming at performance and process optimization.</PackageReleaseNotes>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Copyright>Starciad © 2024</Copyright>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
