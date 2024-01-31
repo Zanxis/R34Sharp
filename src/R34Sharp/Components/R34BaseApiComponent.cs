@@ -30,21 +30,36 @@ namespace R34Sharp.Components
         /// <param name="url">Url where the request will be made.</param>
         /// <param name="serializer">XML serializer that will be used for conversion operations.</param>
         /// <returns>Generic data filled with requested data.</returns>
+        /// <exception cref="HttpRequestException"/>
+        /// <exception cref="InvalidOperationException"/>
+        /// <exception cref="Exception"/>
         protected async Task<T> GetAsync<T>(string url, XmlSerializer serializer) where T : R34Data
         {
             T result = default(T);
 
             try
             {
-                HttpRequestMessage message = new(HttpMethod.Get, url);
-                HttpResponseMessage msg = await this.ApiClient.Client.SendAsync(message);
+                using HttpRequestMessage message = new(HttpMethod.Get, url);
+                using HttpResponseMessage msg = await this.ApiClient.Client.SendAsync(message);
 
-                msg.EnsureSuccessStatusCode();
+                _ = msg.EnsureSuccessStatusCode();
 
-                result = await Task.Run(async () => (T)serializer.Deserialize(new StringReader(await msg.Content.ReadAsStringAsync())));
+                string content = await msg.Content.ReadAsStringAsync();
+                result = (T)serializer.Deserialize(new StringReader(content));
                 await result.BuildAsync(this.ApiClient);
             }
-            catch (Exception) { }
+            catch (HttpRequestException ex)
+            {
+                throw new HttpRequestException("Error while making HTTP request.", ex);
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw new InvalidOperationException("Invalid operation while processing the response.", ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An unexpected error occurred while processing the response.", ex);
+            }
 
             return await Task.FromResult(result);
         }
