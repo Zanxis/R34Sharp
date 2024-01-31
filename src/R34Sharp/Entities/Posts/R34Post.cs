@@ -155,7 +155,7 @@ namespace R34Sharp.Entities.Posts
         /// </summary>
         [XmlAttribute(AttributeName = "status")] public string Status { get; set; }
 
-/// <inheritdoc/>
+        /// <inheritdoc/>
         protected override async Task OnBuildAsync()
         {
             await SetFilesInfosAsync();

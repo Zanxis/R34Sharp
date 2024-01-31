@@ -47,7 +47,7 @@ namespace R34Sharp.Components
                     break;
             }
 
-            return await GetAsync<R34Tags>(urlBuilder.Build(), _tagsXmlSerializer);
+            return await GetAsync<R34Tags>(urlBuilder.Build(), this._tagsXmlSerializer);
         }
     }
 }

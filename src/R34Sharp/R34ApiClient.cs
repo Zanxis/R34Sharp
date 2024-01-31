@@ -75,14 +75,14 @@ namespace R34Sharp
 
         private void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!this.disposedValue)
             {
                 if (disposing)
                 {
                     ((IDisposable)this.Client).Dispose();
                 }
 
-                disposedValue = true;
+                this.disposedValue = true;
             }
         }
 

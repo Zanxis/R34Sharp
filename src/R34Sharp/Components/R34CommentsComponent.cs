@@ -30,7 +30,7 @@ namespace R34Sharp.Components
             urlBuilder.AddParameter("post_id", searchBuilder.PostId.ToString());
 
             // Get Result
-            return await GetAsync<R34Comments>(urlBuilder.Build(), _commentsXmlSerializer);
+            return await GetAsync<R34Comments>(urlBuilder.Build(), this._commentsXmlSerializer);
         }
     }
 }

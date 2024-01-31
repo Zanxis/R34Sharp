@@ -1,9 +1,9 @@
 using R34Sharp.Entities.Posts;
+using R34Sharp.Enums;
 using R34Sharp.Models;
 using R34Sharp.Search;
-using R34Sharp.Enums;
 
-namespace R34Sharp.Tests
+namespace R34Sharp.Tests.Posts
 {
     public class R34PostsTests
     {
@@ -58,18 +58,18 @@ namespace R34Sharp.Tests
         [Fact]
         public async Task Block_Requests_Outside_The_Limit_Range_Async()
         {
-            await Assert.ThrowsAnyAsync<Exception>(async () =>
+            _ = await Assert.ThrowsAnyAsync<Exception>(async () =>
             {
-                await _client.Posts.GetPostsAsync(new()
+                _ = await _client.Posts.GetPostsAsync(new()
                 {
                     Limit = 0,
                     Tags = tagsPrefab
                 });
             });
 
-            await Assert.ThrowsAnyAsync<Exception>(async () =>
+            _ = await Assert.ThrowsAnyAsync<Exception>(async () =>
             {
-                await _client.Posts.GetPostsAsync(new()
+                _ = await _client.Posts.GetPostsAsync(new()
                 {
                     Limit = 1001,
                     Tags = tagsPrefab
@@ -80,9 +80,9 @@ namespace R34Sharp.Tests
         [Fact]
         public async Task Block_Requests_Without_Tags_Async()
         {
-            await Assert.ThrowsAnyAsync<Exception>(async () =>
+            _ = await Assert.ThrowsAnyAsync<Exception>(async () =>
             {
-                await _client.Posts.GetPostsAsync(new()
+                _ = await _client.Posts.GetPostsAsync(new()
                 {
                     Limit = 0,
                     Tags = Array.Empty<R34FormattedTag>()

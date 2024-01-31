@@ -47,7 +47,7 @@ namespace R34Sharp.Components
                 urlBuilder.AddParameter("id", searchBuilder.Id.Value.ToString());
             }
 
-            R34Posts postsResult = await GetAsync<R34Posts>(urlBuilder.Build(), _postsXmlSerializer).ConfigureAwait(false);
+            R34Posts postsResult = await GetAsync<R34Posts>(urlBuilder.Build(), this._postsXmlSerializer).ConfigureAwait(false);
 
             if (searchBuilder.BlockedTags.Length > 0)
             {

@@ -10,12 +10,12 @@ namespace R34Sharp.Url
 
         internal UrlBuilder(string address)
         {
-            BaseAddress = address;
+            this.BaseAddress = address;
         }
 
         internal void AddParameter(string name, string value)
         {
-            parameters.Add((name, value));
+            this.parameters.Add((name, value));
         }
 
         internal void Clear()
@@ -26,15 +26,17 @@ namespace R34Sharp.Url
         internal string Build()
         {
             StringBuilder addressBuilder = new();
-            addressBuilder.Append($"{BaseAddress}?");
+            _ = addressBuilder.Append($"{this.BaseAddress}?");
 
-            for (int i = 0; i < parameters.Count; i++)
+            for (int i = 0; i < this.parameters.Count; i++)
             {
-                (string, string) parameter = parameters[i];
+                (string, string) parameter = this.parameters[i];
                 _ = addressBuilder.Append($"{parameter.Item1.ToLower()}={parameter.Item2.ToLower()}");
 
-                if (i < parameters.Count - 1)
+                if (i < this.parameters.Count - 1)
+                {
                     _ = addressBuilder.Append('&');
+                }
             }
 
             return addressBuilder.ToString();
