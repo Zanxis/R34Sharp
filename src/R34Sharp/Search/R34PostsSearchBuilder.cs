@@ -3,6 +3,7 @@ using R34Sharp.Tools;
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace R34Sharp.Search
@@ -126,25 +127,7 @@ namespace R34Sharp.Search
 
         private static string ConvertTagsToString(R34TagModel[] tags)
         {
-            StringBuilder tagsString = new();
-            int length = tags.Length;
-
-            for (int i = 0; i < length; i++)
-            {
-                R34TagModel tag = tags[i];
-                if (tag == null)
-                {
-                    continue;
-                }
-
-                _ = tagsString.Append(tag.Name);
-                if (i < length - 1)
-                {
-                    _ = tagsString.Append('+');
-                }
-            }
-
-            return tagsString.ToString();
+            return string.Join('+', tags.Where(tag => tag != null).Select(tag => tag.Name));
         }
     }
 }
