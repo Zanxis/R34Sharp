@@ -44,14 +44,14 @@ namespace R34Sharp.Search
         /// </summary>
         /// <remarks>
         /// To find a specific set of posts in a search, you can use "offsets" to find the posts following the number of offsets already searched. For example, if you've searched the last 1000 posts and want to get the next posts without overloading the search, you can set the number of "offsets" to "1" and so on. It's important to remember that "offsets" are directly related to the number of posts that will be searched. <br/><br/>
-        /// If this value is filled in, pay attention to the <see cref="R34TagModel"/> of the search, as there may be inconsistency.
+        /// If this value is filled in, pay attention to the <see cref="R34FormattedTag"/> of the search, as there may be inconsistency.
         /// </remarks>
         public Optional<int> Offset { get; set; }
 
         /// <summary>
         /// The tags that will be used for the search.
         /// </summary>
-        public R34TagModel[] Tags
+        public R34FormattedTag[] Tags
         {
             get => this._tags;
             set
@@ -68,11 +68,11 @@ namespace R34Sharp.Search
         /// <summary>
         /// The tags that will be ignored when searching for Posts.
         /// </summary>
-        public R34TagModel[] BlockedTags { get => this._blockedTags; set => this._blockedTags = value; }
+        public R34FormattedTag[] BlockedTags { get => this._blockedTags; set => this._blockedTags = value; }
 
         private int _limit;
-        private R34TagModel[] _tags;
-        private R34TagModel[] _blockedTags;
+        private R34FormattedTag[] _tags;
+        private R34FormattedTag[] _blockedTags;
 
         /// <summary>
         /// Build a custom search for Rule34 Posts.
@@ -80,8 +80,8 @@ namespace R34Sharp.Search
         public R34PostsSearchBuilder()
         {
             _ = WithLimit(100);
-            _ = WithTags(Array.Empty<R34TagModel>());
-            _ = WithBlockedTags(Array.Empty<R34TagModel>());
+            _ = WithTags(Array.Empty<R34FormattedTag>());
+            _ = WithBlockedTags(Array.Empty<R34FormattedTag>());
 
             this.Id = new();
             this.Offset = new();
@@ -134,7 +134,7 @@ namespace R34Sharp.Search
         /// </summary>
         /// <param name="tags">The tags collection.</param>
         /// <returns>This search builder.</returns>
-        public R34PostsSearchBuilder WithTags(R34TagModel[] tags)
+        public R34PostsSearchBuilder WithTags(R34FormattedTag[] tags)
         {
             this.Tags = tags;
             return this;
@@ -145,13 +145,13 @@ namespace R34Sharp.Search
         /// </summary>
         /// <param name="tags">The tags collection.</param>
         /// <returns>This search builder.</returns>
-        public R34PostsSearchBuilder WithBlockedTags(R34TagModel[] tags)
+        public R34PostsSearchBuilder WithBlockedTags(R34FormattedTag[] tags)
         {
             this.BlockedTags = tags;
             return this;
         }
 
-        private static string ConvertTagsToString(R34TagModel[] tags)
+        private static string ConvertTagsToString(R34FormattedTag[] tags)
         {
             return string.Join('+', tags.Where(tag => tag != null).Select(tag => tag.Name));
         }

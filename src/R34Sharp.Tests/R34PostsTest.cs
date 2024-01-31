@@ -8,11 +8,11 @@ namespace R34Sharp.Tests
     public class R34PostsTest
     {
         private static readonly R34Client _client = new();
-        private static readonly R34TagModel[] tagsPrefab = new R34TagModel[]
+        private static readonly R34FormattedTag[] tagsPrefab = new R34FormattedTag[]
         {
             new("Little Mac"),
         };
-        private static readonly R34TagModel[] blockedTagsPrefab = new R34TagModel[]
+        private static readonly R34FormattedTag[] blockedTagsPrefab = new R34FormattedTag[]
         {
             new("Looking At Viewer"),
         };
@@ -85,7 +85,7 @@ namespace R34Sharp.Tests
                 await _client.Posts.GetPostsAsync(new()
                 {
                     Limit = 0,
-                    Tags = Array.Empty<R34TagModel>()
+                    Tags = Array.Empty<R34FormattedTag>()
                 });
             });
         }

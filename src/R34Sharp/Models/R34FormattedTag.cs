@@ -1,28 +1,26 @@
 ﻿namespace R34Sharp.Models
 {
     /// <summary>
-    /// The Rule34 model Tag Builder.
+    /// Represents a Rule34-formatted tag.
     /// </summary>
-    public sealed class R34TagModel
+    public sealed class R34FormattedTag
     {
         /// <summary>
-        /// Current tag name formatted for the Rule34 tag template.
+        /// Gets or sets the current tag name formatted for the Rule34 tag template.
         /// </summary>
         public string Name
         {
             get => this.name;
             set => this.name = value;
         }
+
         private string name;
 
         /// <summary>
-        /// Build a Tag that is automatically formatted for the Rule34 style.
+        /// Initializes a new instance of the <see cref="R34FormattedTag"/> class.
         /// </summary>
-        /// <remarks>
-        /// All spaces are automatically replaced by the "_" character and the string is fully formatted for lowercase.
-        /// </remarks>
         /// <param name="value">The name of the Rule34 Tag.</param>
-        public R34TagModel(string value)
+        public R34FormattedTag(string value)
         {
             this.name = value.Trim().Replace(' ', '_').ToLower();
         }

@@ -193,21 +193,21 @@ namespace R34Sharp.Entities.Posts
         }
 
         /// <summary>
-        /// Return all existing tags in the post as <see cref="R34TagModel"/> objects.
+        /// Return all existing tags in the post as <see cref="R34FormattedTag"/> objects.
         /// </summary>
         /// <returns>
         /// Collection of post tags.
         /// </returns>
-        public async Task<R34TagModel[]> GetTagsAsync()
+        public async Task<R34FormattedTag[]> GetTagsAsync()
         {
             string[] tagsArray = this.TagsString.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            ConcurrentBag<R34TagModel> tags = new();
+            ConcurrentBag<R34FormattedTag> tags = new();
 
             await Parallel.ForEachAsync(tagsArray, async (item, token) =>
             {
                 await Task.Yield();
 
-                R34TagModel tag = new(item);
+                R34FormattedTag tag = new(item);
                 tags.Add(tag);
             });
 
@@ -219,7 +219,7 @@ namespace R34Sharp.Entities.Posts
         /// </summary>
         /// <param name="tag">The tag to fetch.</param>
         /// <returns>True if the Tag is found.</returns>
-        public bool HasTag(R34TagModel tag)
+        public bool HasTag(R34FormattedTag tag)
         {
             return Array.Find(this.TagsString.Split(' ', StringSplitOptions.RemoveEmptyEntries), x => x == tag.Name) != null;
         }
@@ -229,7 +229,7 @@ namespace R34Sharp.Entities.Posts
         /// </summary>
         /// <param name="tags">The tags to be fetch.</param>
         /// <returns>True if all Tags are found.</returns>
-        public bool HasTags(R34TagModel[] tags)
+        public bool HasTags(R34FormattedTag[] tags)
         {
             for (int i = 0; i < tags.Length; i++)
             {

@@ -29,24 +29,15 @@ namespace R34Sharp.Entities.Tags
 
         internal override async Task BuildAsync(R34Client instance)
         {
-            try
+            if (this.Data == null)
             {
-                if (this.Data == null)
-                {
-                    return;
-                }
-
-                await Parallel.ForEachAsync(this.Data, new Func<R34Tag, CancellationToken, ValueTask>(async (current, token) =>
-                {
-                    await current.BuildAsync(instance);
-                }));
-            }
-            catch (Exception e)
-            {
-                await Task.FromException(e);
+                return;
             }
 
-            await Task.CompletedTask;
+            await Parallel.ForEachAsync(this.Data, new Func<R34Tag, CancellationToken, ValueTask>(async (current, token) =>
+            {
+                await current.BuildAsync(instance);
+            }));
         }
     }
 }

@@ -23,7 +23,7 @@ namespace R34Sharp.Experimental
             R34PostsSearchBuilder searchBuilder = new()
             {
                 Limit = 100,
-                Tags = new R34TagModel[]
+                Tags = new R34FormattedTag[]
                 {
                     new("Bara"),
                 },

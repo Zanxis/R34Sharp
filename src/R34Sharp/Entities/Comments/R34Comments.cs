@@ -29,24 +29,15 @@ namespace R34Sharp.Entities.Comments
 
         internal override async Task BuildAsync(R34Client instance)
         {
-            try
+            if (this.Data == null)
             {
-                if (this.Data == null)
-                {
-                    return;
-                }
-
-                await Parallel.ForEachAsync(this.Data, new Func<R34Comment, CancellationToken, ValueTask>(async (current, token) =>
-                {
-                    await current.BuildAsync(instance);
-                }));
-            }
-            catch (Exception e)
-            {
-                await Task.FromException(e);
+                return;
             }
 
-            await Task.CompletedTask;
+            await Parallel.ForEachAsync(this.Data, new Func<R34Comment, CancellationToken, ValueTask>(async (current, token) =>
+            {
+                await current.BuildAsync(instance);
+            }));
         }
     }
 }
