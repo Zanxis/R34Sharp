@@ -33,8 +33,8 @@ namespace R34Sharp.Experimental
             Console.WriteLine(" [ STARTING ] ");
             Console.WriteLine($"Path: {AssetsDirectory}");
 
-            R34Posts posts = await _client.Posts.GetPostsAsync(searchBuilder);
-            Console.WriteLine($"Post Completed!");
+            R34Posts posts = await _client.Posts.GetPostsByFilterAsync(searchBuilder, x => x.FileType == R34FileType.Image);
+            Console.WriteLine($"Request Completed!");
 
             int count = 0;
             foreach (R34Post post in posts.Data)
