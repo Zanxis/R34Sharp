@@ -2,9 +2,9 @@
 
 using System;
 
-namespace R34Sharp.Helpers
+namespace R34Sharp.IO
 {
-    internal static class FileHelpers
+    internal static class MediaFileFormatDetector
     {
         private static readonly string[] ImageExtensions =
         {

@@ -1,6 +1,7 @@
-﻿using R34Sharp.Entities.Comments;
+﻿using R34Sharp.Date;
+using R34Sharp.Entities.Comments;
 using R34Sharp.Enums;
-using R34Sharp.Helpers;
+using R34Sharp.IO;
 using R34Sharp.Models;
 
 using System;
@@ -166,14 +167,14 @@ namespace R34Sharp.Entities.Posts
         {
             this.FileName = Path.GetFileNameWithoutExtension(this.FileUrl);
             this.FileExtension = Path.GetExtension(this.FileUrl);
-            this.FileType = FileHelpers.GetMediaType(this.FileExtension);
+            this.FileType = MediaFileFormatDetector.GetMediaType(this.FileExtension);
 
             await Task.CompletedTask;
         }
         private async Task SetInfosAsync()
         {
             // CREATE TIMESTAMP
-            this.CreatedAt = DateTimeHelpers.R34Parse(this.CreatedAtString, "ddd MMM dd HH:mm:ss zzz yyyy");
+            this.CreatedAt = DateTimeParser.R34Parse(this.CreatedAtString, "ddd MMM dd HH:mm:ss zzz yyyy");
 
             // DIMENSIONS
             this.FileDimensions = new(this.Width, this.Height);

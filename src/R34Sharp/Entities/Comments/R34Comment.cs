@@ -1,4 +1,4 @@
-﻿using R34Sharp.Helpers;
+﻿using R34Sharp.Date;
 
 using System;
 using System.Threading.Tasks;
@@ -54,7 +54,7 @@ namespace R34Sharp.Entities.Comments
         /// <inheritdoc/>
         protected override async Task OnBuildAsync()
         {
-            this.CreatedAt = DateTimeHelpers.R34Parse(this.CreatedAtString, "yyyy-dd-MM mm:ss");
+            this.CreatedAt = DateTimeParser.R34Parse(this.CreatedAtString, "yyyy-dd-MM mm:ss");
             await Task.CompletedTask;
         }
     }
