@@ -5,7 +5,7 @@ using R34Sharp.Enums;
 
 namespace R34Sharp.Tests
 {
-    public class R34PostsTest
+    public class R34PostsTests
     {
         private static readonly R34ApiClient _client = new();
         private static readonly R34FormattedTag[] tagsPrefab = new R34FormattedTag[]
