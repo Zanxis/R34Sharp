@@ -31,7 +31,11 @@ namespace R34Sharp.Components
             urlBuilder.AddParameter("s", "post");
             urlBuilder.AddParameter("q", "index");
             urlBuilder.AddParameter("limit", searchBuilder.Limit.ToString());
-            urlBuilder.AddParameter("tags", searchBuilder.GetTagsString());
+
+            if (searchBuilder.Tags.Length > 0)
+            {
+                urlBuilder.AddParameter("tags", searchBuilder.GetTagsString());
+            }
 
             if (searchBuilder.Offset.HasValue)
             {

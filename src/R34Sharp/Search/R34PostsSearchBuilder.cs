@@ -51,19 +51,7 @@ namespace R34Sharp.Search
         /// <summary>
         /// The tags that will be used for the search.
         /// </summary>
-        public R34FormattedTag[] Tags
-        {
-            get => this._tags;
-            set
-            {
-                if (value == null || value.Length == 0)
-                {
-                    throw new ArgumentException("Search tags are missing or empty.", nameof(value));
-                }
-
-                this._tags = value;
-            }
-        }
+        public R34FormattedTag[] Tags { get => this._tags; set => this._tags = value; }
 
         /// <summary>
         /// The tags that will be ignored when searching for Posts.
