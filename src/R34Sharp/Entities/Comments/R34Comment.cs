@@ -13,12 +13,6 @@ namespace R34Sharp.Entities.Comments
     [XmlRoot(ElementName = "comment")]
     public sealed class R34Comment : R34Entity
     {
-        #region HEADER
-        /// <summary>
-        /// Date and time the comment was published.
-        /// </summary>
-        [XmlIgnore] public DateTime CreatedAt { get; private set; }
-        #endregion
         #region FILE
         /// <summary>
         /// The ID of comment.
@@ -54,7 +48,6 @@ namespace R34Sharp.Entities.Comments
         /// <inheritdoc/>
         protected override async Task OnBuildAsync()
         {
-            this.CreatedAt = DateTimeParser.R34Parse(this.CreatedAtString, "yyyy-dd-MM mm:ss");
             await Task.CompletedTask;
         }
     }
