@@ -91,43 +91,7 @@ foreach(R34Post post in posts.Data)
 
 ## `3.` FILTERING POSTS
 
-Eventually, it may be useful to filter posts based on specific conditions, for example, you only want videos instead of images, and for that, you can use the system library **System.Linq** to filter all types of posts.
-
-Observe the example below and see that, using the **Where** method, I filter all the contents of the request to only have videos.
-
-<br/>
-
-- _Import of the system library namespace;_
-```cs
-using System.Linq;
-```
-
-<br/>
-
-- _Example of post filtering;_
-```cs
-// Execution of the request.
-R34Posts posts = await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
-{
-	Limit = 1000,
-	Tags = new R34TagModel[] {
-		new R34TagModel("Bowser"),
-	},
-});
-
-// Filter the collection to only hold videos.
-IEnumerable<R34Post> filteredPosts = posts.Data.Where(x => x.FileMediaType == FileMediaType.Video);
-
-// Reads the name of all posts from the enumeration.
-foreach (R34Post post in filteredPosts)
-{
-	Console.WriteLine(post.FileName);
-}
-```
-
-<br/>
-
-With this example, you can observe the amount of possibilities that are provided to you for your own manipulation of posts.
+For detailed information on how to filter and improve post searches, see **search_cheatsheet.md** in the utilities directory.
 
 ## `4.` SEARCHING FOR POST OFFSET
 As you develop and create new things, it might be interesting to go beyond 1000 posts, let's assume you want to request 2000 posts this time, how could you do that if the allowed limit is 1000? Simple, using **Search Offsets**.
