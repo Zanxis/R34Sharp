@@ -26,6 +26,7 @@ namespace R34Sharp.Experimental
                 Tags = new R34FormattedTag[]
                 {
                     new("Bara"),
+                    new("-Video"),
                 },
             };
 
@@ -33,7 +34,7 @@ namespace R34Sharp.Experimental
             Console.WriteLine(" [ STARTING ] ");
             Console.WriteLine($"Path: {AssetsDirectory}");
 
-            R34Posts posts = await _client.Posts.GetPostsByFilterAsync(searchBuilder, x => x.FileType == R34FileType.Image);
+            R34Posts posts = await _client.Posts.GetPostsAsync(searchBuilder);
             Console.WriteLine($"Request Completed!");
 
             int count = 0;

@@ -16,7 +16,6 @@ namespace R34Sharp.Tests.Search
             Assert.Equal(0ul, searchBuilder.Id.Value);
             Assert.Equal(0, searchBuilder.Offset.Value);
             Assert.Empty(searchBuilder.Tags);
-            Assert.Empty(searchBuilder.BlockedTags);
         }
 
         [Fact]
@@ -73,21 +72,6 @@ namespace R34Sharp.Tests.Search
 
             // Assert
             Assert.Equal(tags, searchBuilder.Tags);
-            Assert.Same(searchBuilder, result);
-        }
-
-        [Fact]
-        public void WithBlockedTags_ValidValue_ReturnsBuilderWithBlockedTags()
-        {
-            // Arrange
-            R34PostsSearchBuilder searchBuilder = new();
-            R34FormattedTag[] blockedTags = new R34FormattedTag[] { new("blocked1"), new("blocked2") };
-
-            // Act
-            R34PostsSearchBuilder result = searchBuilder.WithBlockedTags(blockedTags);
-
-            // Assert
-            Assert.Equal(blockedTags, searchBuilder.BlockedTags);
             Assert.Same(searchBuilder, result);
         }
 

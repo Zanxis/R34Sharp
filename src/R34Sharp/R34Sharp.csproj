@@ -10,7 +10,7 @@
 
 	<PropertyGroup>
 		<Description>An unofficial .NET Core wrapper for the Rule34 API.</Description>
-		<PackageReleaseNotes>General changes and reorganizations of the project, aiming at performance and process optimization.</PackageReleaseNotes>
+		<PackageReleaseNotes>Removal of dangerous/redundant functions.</PackageReleaseNotes>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
