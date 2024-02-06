@@ -53,14 +53,8 @@ namespace R34Sharp.Search
         /// </summary>
         public R34FormattedTag[] Tags { get => this._tags; set => this._tags = value; }
 
-        /// <summary>
-        /// The tags that will be ignored when searching for Posts.
-        /// </summary>
-        public R34FormattedTag[] BlockedTags { get => this._blockedTags; set => this._blockedTags = value; }
-
         private int _limit;
         private R34FormattedTag[] _tags;
-        private R34FormattedTag[] _blockedTags;
 
         /// <summary>
         /// Build a custom search for Rule34 Posts.
@@ -69,7 +63,6 @@ namespace R34Sharp.Search
         {
             _ = WithLimit(100);
             _ = WithTags(Array.Empty<R34FormattedTag>());
-            _ = WithBlockedTags(Array.Empty<R34FormattedTag>());
 
             this.Id = new();
             this.Offset = new();
@@ -78,10 +71,6 @@ namespace R34Sharp.Search
         internal string GetTagsString()
         {
             return ConvertTagsToString(this._tags);
-        }
-        internal string GetBlockedTagsString()
-        {
-            return ConvertTagsToString(this._blockedTags);
         }
 
         /// <summary>
@@ -125,17 +114,6 @@ namespace R34Sharp.Search
         public R34PostsSearchBuilder WithTags(R34FormattedTag[] tags)
         {
             this.Tags = tags;
-            return this;
-        }
-
-        /// <summary>
-        /// Define the blocked tags that will be ignored in the search.
-        /// </summary>
-        /// <param name="tags">The tags collection.</param>
-        /// <returns>This search builder.</returns>
-        public R34PostsSearchBuilder WithBlockedTags(R34FormattedTag[] tags)
-        {
-            this.BlockedTags = tags;
             return this;
         }
 

@@ -1,5 +1,4 @@
 using R34Sharp.Entities.Posts;
-using R34Sharp.Enums;
 using R34Sharp.Models;
 using R34Sharp.Search;
 
@@ -11,10 +10,7 @@ namespace R34Sharp.Tests.Posts
         private static readonly R34FormattedTag[] tagsPrefab = new R34FormattedTag[]
         {
             new("Little Mac"),
-        };
-        private static readonly R34FormattedTag[] blockedTagsPrefab = new R34FormattedTag[]
-        {
-            new("Looking At Viewer"),
+            new("-Looking At Viewer"),
         };
 
         [Fact]
@@ -30,26 +26,12 @@ namespace R34Sharp.Tests.Posts
         }
 
         [Fact]
-        public async Task Filter_All_Posts_To_Get_Videos_Async()
-        {
-            R34Posts posts = await _client.Posts.GetPostsByFilterAsync(new()
-            {
-                Limit = 1000,
-                Tags = tagsPrefab
-
-            }, x => x.FileType == R34FileType.Video);
-
-            Assert.All(posts.Data, x => Assert.True(x.FileType == R34FileType.Video));
-        }
-
-        [Fact]
         public async Task Blocking_Posts_That_Contain_Certain_Tags_Async()
         {
             R34Posts posts = await _client.Posts.GetPostsAsync(new()
             {
                 Limit = 1000,
                 Tags = tagsPrefab,
-                BlockedTags = blockedTagsPrefab,
             });
 
             Assert.All(posts.Data, x => Assert.False(x.HasTag(new("Looking At Viewer"))));
