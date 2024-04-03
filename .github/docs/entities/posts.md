@@ -47,8 +47,8 @@ await client.Posts.GetPostsAsync(new R34PostsSearchBuilder());
 await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 {
 	Limit = 1000,
-	Tags = new R34TagModel[] {
-		new R34TagModel("Bowser"),
+	Tags = new R34FormattedTag[] {
+		new R34FormattedTag("Bowser"),
 	},
 });
 ```
@@ -73,8 +73,8 @@ In order to obtain information from each post, we can place the **Data** field i
 R34Posts posts = await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 {
 	Limit = 1000,
-	Tags = new R34TagModel[] {
-		new R34TagModel("Bowser"),
+	Tags = new R34FormattedTag[] {
+		new R34FormattedTag("Bowser"),
 	},
 });
 
@@ -108,8 +108,8 @@ for(int i = 0; i < 2; i++)
 	R34Posts posts1 = await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 	{
 		Limit = 1000,
-		Tags = new R34TagModel[] {
-			new R34TagModel("Bowser"),
+		Tags = new R34FormattedTag[] {
+			new R34FormattedTag("Bowser"),
 		},
 
 		// Defines the offset to be searched.
@@ -141,8 +141,8 @@ See the example below, which downloads all posts made in one request:
 R34Posts posts = await client.Posts.GetPostsAsync(new R34PostsSearchBuilder()
 {
 	Limit = 10,
-	Tags = new R34TagModel[] {
-		new R34TagModel("Bowser"),
+	Tags = new R34FormattedTag[] {
+		new R34FormattedTag("Bowser"),
 	},
 });
 
