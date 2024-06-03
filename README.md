@@ -36,4 +36,4 @@ Looking for more information on the basic API schemas? Look no further than our 
 `3.` 🔗 》 CREDITS
 -----------------
 
-*Who's behind this incredible API, you ask?* None other than the illustrious [@starciad](https://github.com/starciad/)! If you're interested in checking out some of their other projects, be sure to take a peek at their profile. You won't be disappointed!
+*Who's behind this incredible API, you ask?* None other than the illustrious [@starciad](https://github.com/starciad/) and [@zanxis](https://github.com/zanxis/)! If you're interested in checking out some of their other projects, be sure to take a peek at their profile. You won't be disappointed!
